@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HackyStaty03"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="800">
+        Title="OW Stats" Height="650" Width="800">
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
             <MenuItem IsEnabled="False" Header="_File">
@@ -91,8 +91,8 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Column="0" Grid.Row="0" Content="(Re)Load [NW]" Command="{Binding LoadEverythingCommand}"></Button>
-                            <Button Grid.Column="1" Grid.Row="0" Content="Save2DataStore [NW]" Command="{Binding Save2DataStoreCommand}"></Button>
+                            <Button Grid.Column="0" Grid.Row="0" Content="(Re)Load" Command="{Binding LoadEverythingCommand}"></Button>
+                            <Button Grid.Column="1" Grid.Row="0" Content="Save 2 DataStore" Command="{Binding Save2DataStoreCommand}"></Button>
                         </Grid>
                     </StackPanel>
                 </GroupBox>

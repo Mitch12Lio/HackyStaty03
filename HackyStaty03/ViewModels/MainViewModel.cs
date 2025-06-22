@@ -376,6 +376,13 @@ namespace HackyStaty03.ViewModels
             }
         }
 
+        [RelayCommand]
+        public void Save2DataStore() 
+        { 
+            WriteData();
+            Properties.HackyStatySetting.Default.Save();
+        }
+
         #endregion
 
         #region Statistics
@@ -851,22 +858,28 @@ namespace HackyStaty03.ViewModels
             else { StatusMessage = "Nothing to delete."; }
         }
 
-
+        [RelayCommand]
         public void ClearSeasonFields()
         {
             NewSeasonName = String.Empty;
             NewSeasonId = 0;
         }
+
+        [RelayCommand]
         public void ClearLeagueFields()
         {
             NewLeagueName = String.Empty;
             NewLeagueId = 0;
         }
+
+        [RelayCommand]
         public void ClearDivisionFields()
         {
             NewDivisionName = String.Empty;
             NewDivisionId = 0;
         }
+
+        [RelayCommand]
         public void ClearTeamFields()
         {
             NewTeamName = String.Empty;
