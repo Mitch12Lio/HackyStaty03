@@ -137,7 +137,7 @@ namespace HackyStaty03.ViewModels
                             SelectedDivision = selectedLeague.Children[0];
                         }
                         ModifiedLeagueName = selectedLeague.Name;
-                    }                  
+                    }
                     OnPropertyChanged(nameof(SelectedLeague));
                 }
             }
@@ -163,7 +163,7 @@ namespace HackyStaty03.ViewModels
                             SelectedTeam = selectedDivision.Children[0];
                         }
                         ModifiedDivisionName = selectedDivision.Name;
-                    }                 
+                    }
                     OnPropertyChanged(nameof(SelectedDivision));
                 }
             }
@@ -205,7 +205,7 @@ namespace HackyStaty03.ViewModels
             else { return false; }
 
 
-               
+
         }
 
         private string printLocation = Properties.HackyStatySetting.Default.PrintLocation;
@@ -272,7 +272,7 @@ namespace HackyStaty03.ViewModels
                     while (!reader.EndOfStream)
                     {
                         string? jSonString = reader.ReadLine();
-                        MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);                     
+                        MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
                     }
 
                     if (HasChildren(MainOWRoot.Children))
@@ -512,7 +512,7 @@ namespace HackyStaty03.ViewModels
         [RelayCommand]
         public void AddSeason()
         {
-            if (!String.IsNullOrWhiteSpace(NewSeasonName) && (NewSeasonId > 0))
+            if (SeasonAdditionCheck())
             {
                 StatusMessage = "Adding Season...";
                 Season newSeason = new Season { Name = NewSeasonName, OWHAId = NewSeasonId, GuidId = Guid.NewGuid() };
@@ -522,87 +522,210 @@ namespace HackyStaty03.ViewModels
                 ClearSeasonFields();
                 StatusMessage = "Ready";
             }
-            else { StatusMessage = "Invalid parameters."; }
+            else
+            {
+                //Status messages will bubble up 
+            }
+        }
+
+        private bool SeasonAdditionCheck()
+        {
+            bool good2Go = false;
+
+            if (MainOWRoot != null)
+            {
+                if (!String.IsNullOrWhiteSpace(NewSeasonName) && (NewSeasonId > 0))
+                {
+                    if (HasChildren(MainOWRoot.Children))
+                    {
+                        if (MainOWRoot.Children.Where(x => x.OWHAId == NewSeasonId).Any())
+                        {
+                            if (System.Windows.MessageBox.Show($"You already have a season with this ID.  Continue?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                good2Go = true;
+                            }
+                            else { StatusMessage = "Addition cancelled."; }
+                        }
+                        else
+                        {
+                            good2Go = true;
+                        }
+                    }
+                    else
+                    {
+                        good2Go = true;
+                    }
+                }
+                else { StatusMessage = "Invalid parameters."; }
+            }
+            else { StatusMessage = "A root must exist."; }
+
+            return good2Go;
         }
 
         [RelayCommand]
         public void AddLeague()
         {
+            if (LeagueAdditionCheck())
+            {
+                StatusMessage = "Adding League...";
+                League newLeague = new League { Name = NewLeagueName, OWHAId = NewLeagueId, GuidId = Guid.NewGuid() };
+                SelectedSeason.Children.Add(newLeague);
+                SelectedLeague = newLeague;
+                DataModified = true;
+                ClearLeagueFields();
+                StatusMessage = "Ready";
+            }
+            else
+            {
+                //Status messages will bubble up 
+            }
+        }
+        private bool LeagueAdditionCheck()
+        {
+            bool good2Go = false;
+
             if (SelectedSeason != null)
             {
                 if (!String.IsNullOrWhiteSpace(NewLeagueName) && (NewLeagueId > 0))
                 {
-                    League existingLeague = SelectedSeason.Children.Where(x => x.OWHAId == NewLeagueId).FirstOrDefault();
-                    if (existingLeague != null)
+                    if (HasChildren(SelectedSeason.Children))
                     {
-                        if (System.Windows.MessageBox.Show($"You already have a league with this ID.  Continue?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        if (SelectedSeason.Children.Where(x => x.OWHAId == NewLeagueId).Any())
                         {
-                            StatusMessage = "Adding League...";
-                            League newLeague = new League { Name = NewLeagueName, OWHAId = NewLeagueId, GuidId = Guid.NewGuid() };
-                            SelectedSeason.Children.Add(newLeague);
-                            SelectedLeague = newLeague;
-                            DataModified = true;
-                            ClearLeagueFields();
-                            StatusMessage = "Ready";
+                            if (System.Windows.MessageBox.Show($"You already have a league with this ID.  Continue?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                good2Go = true;
+                            }
+                            else { StatusMessage = "Addition cancelled."; }
                         }
-                        else { StatusMessage = "Addition cancelled."; }
+                        else
+                        {
+                            good2Go = true;
+                        }
                     }
                     else
                     {
-                        StatusMessage = "Adding League...";
-                        League newLeague = new League { Name = NewLeagueName, OWHAId = NewLeagueId, GuidId = Guid.NewGuid() };
-                        SelectedSeason.Children.Add(newLeague);
-                        SelectedLeague = newLeague;
-                        DataModified = true;
-                        ClearLeagueFields();
-                        StatusMessage = "Ready";
+                        good2Go = true;
                     }
                 }
                 else { StatusMessage = "Invalid parameters."; }
             }
             else { StatusMessage = "A season must be selected."; }
+
+            return good2Go;
         }
+
 
         [RelayCommand]
         public void AddDivision()
         {
+            if (DivisionAdditionCheck())
+            {
+                StatusMessage = "Adding Division...";
+                Division newDivision = new Division { Name = NewDivisionName, OWHAId = NewDivisionId, GuidId = Guid.NewGuid() };
+                SelectedLeague.Children.Add(newDivision);
+                SelectedDivision = newDivision;
+                DataModified = true;
+                ClearDivisionFields();
+                StatusMessage = "Ready";
+            }
+            else
+            {
+                //Status messages will bubble up 
+            }
+
+        }
+
+        private bool DivisionAdditionCheck()
+        {
+            bool good2Go = false;
+
             if (SelectedLeague != null)
             {
                 if (!String.IsNullOrWhiteSpace(NewDivisionName) && (NewDivisionId > 0))
                 {
-                    StatusMessage = "Adding Division...";
-                    Division newDivision = new Division { Name = NewDivisionName, OWHAId = NewDivisionId, GuidId = Guid.NewGuid() };
-                    SelectedLeague.Children.Add(newDivision);
-                    SelectedDivision = newDivision;
-                    DataModified = true;
-                    ClearDivisionFields();
-                    StatusMessage = "Ready";
+                    if (HasChildren(SelectedLeague.Children))
+                    {
+                        if (SelectedLeague.Children.Where(x => x.OWHAId == NewDivisionId).Any())
+                        {
+                            if (System.Windows.MessageBox.Show($"You already have a division with this ID.  Continue?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                good2Go = true;
+                            }
+                            else { StatusMessage = "Addition cancelled."; }
+                        }
+                        else
+                        {
+                            good2Go = true;
+                        }
+                    }
+                    else
+                    {
+                        good2Go = true;
+                    }
                 }
                 else { StatusMessage = "Invalid parameters."; }
             }
             else { StatusMessage = "A league must be selected."; }
+
+            return good2Go;
         }
+
 
         [RelayCommand]
         public void AddTeam()
         {
+            if (TeamAdditionCheck())
+            {
+                StatusMessage = "Adding Division...";
+                Team newTeam = new Team { Name = NewTeamName, OWHAId = NewTeamId, GuidId = Guid.NewGuid() };
+                SelectedDivision.Children.Add(newTeam);
+                SelectedTeam = newTeam;
+                DataModified = true;
+                ClearTeamFields();
+                StatusMessage = "Ready";
+            }
+            else
+            {
+                //Status messages will bubble up 
+            }
+        }
+
+        private bool TeamAdditionCheck()
+        {
+            bool good2Go = false;
+
             if (SelectedDivision != null)
             {
                 if (!String.IsNullOrWhiteSpace(NewTeamName) && (NewTeamId > 0))
                 {
-                    StatusMessage = "Adding Division...";
-                    Team newTeam = new Team { Name = NewTeamName, OWHAId = NewTeamId, GuidId = Guid.NewGuid() };
-                    SelectedDivision.Children.Add(newTeam);
-                    SelectedTeam = newTeam;
-                    DataModified = true;
-                    ClearTeamFields();
-                    StatusMessage = "Ready";
+                    if (HasChildren(SelectedDivision.Children))
+                    {
+                        if (SelectedDivision.Children.Where(x => x.OWHAId == NewTeamId).Any())
+                        {
+                            if (System.Windows.MessageBox.Show($"You already have a team with this ID.  Continue?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                            {
+                                good2Go = true;
+                            }
+                            else { StatusMessage = "Addition cancelled."; }
+                        }
+                        else
+                        {
+                            good2Go = true;
+                        }
+                    }
+                    else
+                    {
+                        good2Go = true;
+                    }
                 }
                 else { StatusMessage = "Invalid parameters."; }
             }
             else { StatusMessage = "A division must be selected."; }
-        }
 
+            return good2Go;
+        }
 
         [RelayCommand]
         public void RenameSeason()
@@ -622,7 +745,7 @@ namespace HackyStaty03.ViewModels
             if (SelectedLeague != null)
             {
                 StatusMessage = "Renaming League...";
-                SelectedLeague.Name = ModifiedLeagueName;             
+                SelectedLeague.Name = ModifiedLeagueName;
                 ModifiedLeagueName = String.Empty;
                 DataModified = true;
                 StatusMessage = "Ready";
