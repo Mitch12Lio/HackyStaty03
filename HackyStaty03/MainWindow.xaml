@@ -1,0 +1,754 @@
+﻿<Window x:Class="HackyStaty03.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HackyStaty03"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="800">
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem IsEnabled="False" Header="_File">
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Close" />
+                <MenuItem Header="_Save" />
+            </MenuItem>
+            <MenuItem IsEnabled="False" Header="_Edit">
+                <MenuItem Header="_Cut" />
+                <MenuItem Header="_Copy" />
+                <MenuItem Header="_Paste" />
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem DockPanel.Dock="Right">
+                <Grid DockPanel.Dock="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="1" FontFamily="Century Gothic" Content="MGC"></Label>
+                </Grid>
+            </StatusBarItem>
+            <StatusBarItem>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Status:"></Label>
+                    <Label Grid.Row="0" Grid.Column="1" Content="{Binding StatusMessage}"></Label>
+                </Grid>
+            </StatusBarItem>
+        </StatusBar>
+        <Expander DockPanel.Dock="Bottom" Header="Paths'" ExpandDirection="Up">
+            <StackPanel>
+                <GroupBox BorderThickness="3">
+                    <GroupBox.Header>
+                        <Span FontWeight="DemiBold">Print Location</Span>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <TextBox Text="{Binding PrintLocation}"></TextBox>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Content="Folder..." CommandParameter="PrintLocation" Command="{Binding SetFolderCommand}"></Button>
+                            <Button Grid.Row="0" Grid.Column="1" Content="Open" CommandParameter="PrintLocation" Command="{Binding OpenWindowsExplorerCommand}"></Button>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox BorderThickness="3">
+                    <GroupBox.Header>
+                        <Span FontWeight="DemiBold">Data Source</Span>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <TextBox Text="{Binding CurrentDataFile}"></TextBox>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Row="0" Grid.Column="0" Content="File..." CommandParameter="CurrentDataFile" Command="{Binding SetFileCommand}"></Button>
+                            <Button Grid.Row="0" Grid.Column="1" Content="Open" CommandParameter="CurrentDataPath" Command="{Binding OpenWindowsExplorerCommand}"></Button>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Button Grid.Column="0" Grid.Row="0" Content="(Re)Load [NW]" Command="{Binding LoadEverythingCommand}"></Button>
+                            <Button Grid.Column="1" Grid.Row="0" Content="Save2DataStore [NW]" Command="{Binding Save2DataStoreCommand}"></Button>
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </Expander>
+        <TabControl>
+        
+            <TabItem Header="Execute">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Expander Grid.Row="0" Grid.Column="0" Header="Add">
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Span FontWeight="DemiBold">Season</Span>
+                                    </GroupBox.Header>
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewSeasonName}"></TextBox>
+                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewSeasonId}"></TextBox>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddSeasonCommand}"></Button>
+                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearSeasonFieldsCommand}"></Button>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Span FontWeight="DemiBold">League</Span>
+                                    </GroupBox.Header>
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewLeagueName}"></TextBox>
+                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewLeagueId}"></TextBox>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddLeagueCommand}"></Button>
+                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearLeagueFieldsCommand}"></Button>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Grid.Row="0" Grid.Column="2" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Span FontWeight="DemiBold">Division</Span>
+                                    </GroupBox.Header>
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewDivisionName}"></TextBox>
+                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewDivisionId}"></TextBox>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddDivisionCommand}"></Button>
+                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearDivisionFieldsCommand}"></Button>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
+                                <GroupBox Grid.Row="0" Grid.Column="3" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Span FontWeight="DemiBold">Team</Span>
+                                    </GroupBox.Header>
+                                    <StackPanel>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewTeamName}"></TextBox>
+                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewTeamId}"></TextBox>
+                                        </Grid>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddTeamCommand}"></Button>
+                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearTeamFieldsCommand}"></Button>
+                                        </Grid>
+                                    </StackPanel>
+                                </GroupBox>
+                            </Grid>
+                        </StackPanel>
+
+                    </Expander>
+                    <GroupBox Grid.Row="1" Grid.Column="0" BorderThickness="3">
+                        <GroupBox.Header>
+                            <Span FontWeight="DemiBold">Parameters</Span>
+                        </GroupBox.Header>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="League" FontWeight="DemiBold"></Label>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedSeason.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                            </TextBlock>
+                                        </Grid>
+                                    </GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding MainOWRoot.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSeason,Mode=TwoWay}"></ComboBox>
+                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteSeasonCommand}"></Button>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="Season" FontWeight="DemiBold"></Label>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedLeague.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                            </TextBlock>
+                                        </Grid>
+                                    </GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedSeason.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedLeague,Mode=TwoWay}"></ComboBox>
+                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteLeagueCommand}"></Button>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Grid.Row="0" Grid.Column="2" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="Division" FontWeight="DemiBold"></Label>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedDivision.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                            </TextBlock>
+                                        </Grid>
+                                    </GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding  SelectedLeague.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDivision,Mode=TwoWay}"></ComboBox>
+                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteDivisionCommand}"></Button>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Grid.Row="0" Grid.Column="3" BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Content="Team" FontWeight="DemiBold"></Label>
+                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedTeam.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                            </TextBlock>
+                                        </Grid>
+                                    </GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedDivision.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTeam,Mode=TwoWay}"></ComboBox>
+                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteTeamCommand}"></Button>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>                          
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Grid.Row="2" Grid.Column="0" BorderThickness="3">
+                        <GroupBox.Header>
+                            <Span FontWeight="DemiBold">Statistics</Span>
+                        </GroupBox.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <ListView Grid.Row="0" Grid.Column="0" ItemsSource="{Binding PlayerStats}" DisplayMemberPath="PlayerStats">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="PID" Width="50">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding PID}" FontWeight="{Binding ItemFontWeight}" HorizontalAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Rk" Width="50">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding rank}" FontWeight="{Binding ItemFontWeight}" HorizontalAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="#" Width="80">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding jersey}" FontWeight="{Binding ItemFontWeight}" HorizontalAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="First" Width="150">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding fname}" FontWeight="{Binding ItemFontWeight}"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="Last" Width="150">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding lname}" FontWeight="{Binding ItemFontWeight}"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="GP" Width="80">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding GP}" FontWeight="{Binding ItemFontWeight}"  TextAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="G" Width="80">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding G}" FontWeight="{Binding ItemFontWeight}"  TextAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="A" Width="80">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding A}" FontWeight="{Binding ItemFontWeight}" HorizontalAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="PTS" Width="80">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding PTS}" FontWeight="{Binding ItemFontWeight}" HorizontalAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn Header="PIM" Width="80">
+                                            <GridViewColumn.HeaderContainerStyle>
+                                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                                </Style>
+                                            </GridViewColumn.HeaderContainerStyle>
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Text="{Binding PIMd}" FontWeight="{Binding ItemFontWeight}" HorizontalAlignment="Center"></TextBlock>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <GroupBox Grid.Row="1" Grid.Column="0" BorderThickness="3">
+                                <GroupBox.Header>
+                                    <Span FontWeight="DemiBold">Url</Span>
+                                </GroupBox.Header>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Content="{Binding CurrentStatisticURL}"></Label>
+                                    <Button Grid.Row="0" Grid.Column="1" Command="{Binding CopyStatisticUrlCommand}" Content="Copy"></Button>
+                                </Grid>
+                            </GroupBox>
+                            <Grid Grid.Row="2" Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Button Grid.Row="0" Grid.Column="0" Content="Fetch" Command="{Binding FetchStatisticsCommand}"></Button>
+                                <Button Grid.Row="0" Grid.Column="1" Content="Clear" Command="{Binding ClearStatisticsCommand}"></Button>
+                                <Button Grid.Row="0" Grid.Column="2" Content="Print" Command="{Binding PrintStatisticsCommand}"></Button>
+                            </Grid>
+                        </Grid>
+
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Mods">
+                <GroupBox Grid.Row="1" Grid.Column="0" BorderThickness="3">
+                    <GroupBox.Header>
+                        <Span FontWeight="DemiBold">Parameters</Span>
+                    </GroupBox.Header>
+                    <StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
+                                <GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Content="Season" FontWeight="DemiBold"></Label>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedSeason.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                        </TextBlock>
+                                    </Grid>
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                         
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding MainOWRoot.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSeason,Mode=TwoWay}"></ComboBox>
+                                       
+                                    </Grid>
+                                    <Label Content="Rename"></Label>
+                                    <TextBox Text="{Binding ModifiedSeasonName}"></TextBox>
+                                    <Button Content="Rename/Save" Command="{Binding RenameSeasonCommand}"></Button>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
+                                <GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Content="League" FontWeight="DemiBold"></Label>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedLeague.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                        </TextBlock>
+                                    </Grid>
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedSeason.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedLeague,Mode=TwoWay}"></ComboBox>
+
+                                    </Grid>
+                                    <Label Content="Rename"></Label>
+                                    <TextBox Text="{Binding ModifiedLeagueName}"></TextBox>
+                                    <Button Content="Rename/Save" Command="{Binding RenameLeagueCommand}"></Button>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Row="0" Grid.Column="2" BorderThickness="3">
+                                <GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Content="Division" FontWeight="DemiBold"></Label>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedDivision.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                        </TextBlock>
+                                    </Grid>
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <!--<ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding DivisionLst}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDivision,Mode=TwoWay}"></ComboBox>-->
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedLeague.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDivision,Mode=TwoWay}"></ComboBox>
+
+                                    </Grid>
+                                    <Label Content="Rename"></Label>
+                                    <TextBox Text="{Binding ModifiedDivisionName}"></TextBox>
+                                    <Button Content="Rename/Save" Command="{Binding RenameDivisionCommand}"></Button>
+                                </StackPanel>
+                            </GroupBox>
+                            <GroupBox Grid.Row="0" Grid.Column="3" BorderThickness="3">
+                                <GroupBox.Header>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" Content="Team" FontWeight="DemiBold"></Label>
+                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+<Run Text="("></Run>
+<Run Text="{Binding SelectedTeam.OWHAId}"></Run>
+<Run Text=")"></Run>
+                                        </TextBlock>
+                                    </Grid>
+                                </GroupBox.Header>
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <!--<ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding TeamLst}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTeam,Mode=TwoWay}"></ComboBox>-->
+                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedDivision.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTeam,Mode=TwoWay}"></ComboBox>
+                                    </Grid>
+                                    <Label Content="Rename"></Label>
+                                    <TextBox Text="{Binding ModifiedTeamName}"></TextBox>
+                                    <Button Content="Rename/Save" Command="{Binding RenameTeamCommand}"></Button>
+                                </StackPanel>
+                            </GroupBox>
+                        </Grid>
+                        <!--<Button Content="(Re)Load" Command="{Binding LoadEverythingCommand}"></Button>-->
+                    </StackPanel>
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="TreeView">
+                <TreeView ItemsSource="{Binding MainOWRoot.Children}">
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                            </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
+            </TabItem>
+            <TabItem Header="Totals"></TabItem>
+        </TabControl>
+    </DockPanel>
+</Window>

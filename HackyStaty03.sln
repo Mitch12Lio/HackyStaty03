@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackyStaty03", "HackyStaty03\HackyStaty03.csproj", "{18359B05-5450-4E68-BE12-CC0B31125EB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18359B05-5450-4E68-BE12-CC0B31125EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18359B05-5450-4E68-BE12-CC0B31125EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18359B05-5450-4E68-BE12-CC0B31125EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18359B05-5450-4E68-BE12-CC0B31125EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BE51E603-8521-4D57-A83C-947611655B02}
+	EndGlobalSection
+EndGlobal
