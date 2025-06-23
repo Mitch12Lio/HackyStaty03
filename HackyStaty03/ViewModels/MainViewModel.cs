@@ -507,9 +507,10 @@ namespace HackyStaty03.ViewModels
 
         #region Random
 
+        [RelayCommand]
         public void CopyStatisticUrl()
         {
-            System.Windows.Clipboard.SetText(currentStatisticURL);
+            System.Windows.Clipboard.SetText(CurrentStatisticURL);
         }
 
         #endregion

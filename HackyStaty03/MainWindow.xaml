@@ -125,7 +125,7 @@
                                 </Grid.RowDefinitions>
                                 <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
                                     <GroupBox.Header>
-                                        <Span FontWeight="DemiBold">Season</Span>
+                                        <Span FontWeight="DemiBold">League</Span>
                                     </GroupBox.Header>
                                     <StackPanel>
                                         <Grid>
@@ -158,7 +158,7 @@
                                 </GroupBox>
                                 <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
                                     <GroupBox.Header>
-                                        <Span FontWeight="DemiBold">League</Span>
+                                        <Span FontWeight="DemiBold">Season</Span>
                                     </GroupBox.Header>
                                     <StackPanel>
                                         <Grid>
@@ -601,7 +601,7 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" Grid.Column="0" Content="Season" FontWeight="DemiBold"></Label>
+                                        <Label Grid.Row="0" Grid.Column="0" Content="League" FontWeight="DemiBold"></Label>
                                         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
 <Run Text="("></Run>
 <Run Text="{Binding SelectedSeason.OWHAId}"></Run>
@@ -636,7 +636,7 @@
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
-                                        <Label Grid.Row="0" Grid.Column="0" Content="League" FontWeight="DemiBold"></Label>
+                                        <Label Grid.Row="0" Grid.Column="0" Content="Season" FontWeight="DemiBold"></Label>
                                         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
 <Run Text="("></Run>
 <Run Text="{Binding SelectedLeague.OWHAId}"></Run>
