@@ -11,6 +11,6 @@ namespace HackyStaty03.Models
     {
         public Guid GuidId { get; set; }
         public string Name { get; set; } = string.Empty;
-        public ObservableCollection<Season>? Children { get; set; } = new ObservableCollection<Season>();
+        public ObservableCollection<Season> Children { get; set; } = new ObservableCollection<Season>();
     }
 }

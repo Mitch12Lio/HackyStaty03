@@ -42,58 +42,66 @@ namespace HackyStaty03.ViewModels
         #region Core Properties
 
         [ObservableProperty]
-        private String newSeasonName;
+        private String newSeasonName = String.Empty;
         [ObservableProperty]
-        private int newSeasonId;
+        private int newSeasonId = 0;
 
         [ObservableProperty]
-        private String newLeagueName;
+        private String newLeagueName = String.Empty;
         [ObservableProperty]
-        private int newLeagueId;
+        private int newLeagueId = 0;
 
         [ObservableProperty]
-        private String newDivisionName;
+        private String newDivisionName = String.Empty;
         [ObservableProperty]
-        private int newDivisionId;
+        private int newDivisionId = 0;
 
         [ObservableProperty]
-        private String newTeamName;
+        private String newTeamName = String.Empty;
         [ObservableProperty]
-        private int newTeamId;
+        private int newTeamId = 0;
 
         [ObservableProperty]
-        private String modifiedSeasonName;
+        private String modifiedSeasonName = String.Empty;
 
         [ObservableProperty]
-        private String modifiedLeagueName;
+        private String modifiedLeagueName = String.Empty;
 
         [ObservableProperty]
-        private String modifiedDivisionName;
+        private String modifiedDivisionName = String.Empty;
 
         [ObservableProperty]
-        private String modifiedTeamName;
+        private String modifiedTeamName = String.Empty;
 
 
-        [ObservableProperty]
+        //[ObservableProperty]
         private OWRoot mainOWRoot = new OWRoot();
-        //public OWRoot MainOWRoot
-        //{
-        //    get
-        //    {
-        //        return mainOWRoot;
-        //    }
-        //    set
-        //    {
-        //        if (mainOWRoot != value)
-        //        {
-        //            mainOWRoot = value;
-        //            OnPropertyChanged(nameof(MainOWRoot));
-        //        }
-        //    }
-        //}
+        public OWRoot MainOWRoot
+        {
+            get
+            {
+                return mainOWRoot;
+            }
+            set
+            {
+                if (mainOWRoot != value)
+                {
+                    mainOWRoot = value;
+                    //if (mainOWRoot != null)
+                    //{
+                    //    if (HasChildren(mainOWRoot.Children))
+                    //    {
+                    //        SelectedSeason = mainOWRoot.Children[0];
+                    //    }
+                    //    //ModifiedSeasonName = selectedSeason.Name;
+                    //}
+                    OnPropertyChanged(nameof(MainOWRoot));
+                }
+            }
+        }
 
-        private Season selectedSeason;
-        public Season SelectedSeason
+        private Season? selectedSeason;
+        public Season? SelectedSeason
         {
             get
             {
@@ -107,7 +115,7 @@ namespace HackyStaty03.ViewModels
                     if (selectedSeason != null)
                     {
                         if (HasChildren(selectedSeason.Children))
-                        {
+                        {                          
                             SelectedLeague = selectedSeason.Children[0];
                         }
                         ModifiedSeasonName = selectedSeason.Name;
@@ -118,8 +126,8 @@ namespace HackyStaty03.ViewModels
         }
 
 
-        private League selectedLeague;
-        public League SelectedLeague
+        private League? selectedLeague;
+        public League? SelectedLeague
         {
             get
             {
@@ -144,8 +152,8 @@ namespace HackyStaty03.ViewModels
         }
 
 
-        private Division selectedDivision;
-        public Division SelectedDivision
+        private Division? selectedDivision;
+        public Division? SelectedDivision
         {
             get
             {
@@ -169,8 +177,8 @@ namespace HackyStaty03.ViewModels
             }
         }
 
-        private Team selectedTeam;
-        public Team SelectedTeam
+        private Team? selectedTeam;
+        public Team? SelectedTeam
         {
             get
             {
@@ -246,18 +254,7 @@ namespace HackyStaty03.ViewModels
         }
 
         #region Startup/Shutdown
-        public void OnWindowClosing(object sender, CancelEventArgs e)
-        {
-            // Handle closing logic, set e.Cancel as needed
-            SaveClosingProperties();
-            ClearDataFileContent();
-            if (DataModified)
-            {
-                WriteData();
-            }
-            Properties.HackyStatySetting.Default.Save();
-        }
-
+      
         [RelayCommand]
         public void LoadEverything()
         {
@@ -270,13 +267,13 @@ namespace HackyStaty03.ViewModels
                 using (var reader = new System.IO.StreamReader(CurrentDataFile))
                 {
                     while (!reader.EndOfStream)
-                    {
+                    {                        
                         string? jSonString = reader.ReadLine();
                         MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
                     }
 
                     if (HasChildren(MainOWRoot.Children))
-                    {
+                    {                     
                         SelectedSeason = MainOWRoot.Children.FirstOrDefault(x => x.GuidId == Properties.HackyStatySetting.Default.LastSelectedSeasonGuid);
                         if (SelectedSeason == null)
                         {
@@ -332,6 +329,20 @@ namespace HackyStaty03.ViewModels
                 }
             }
         }
+
+        public void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            // Handle closing logic, set e.Cancel as needed
+            SaveClosingProperties();
+            ClearDataFileContent();
+            
+            if (DataModified)
+            {                
+                WriteData();
+            }
+            Properties.HackyStatySetting.Default.Save();
+        }
+
         private void SaveClosingProperties()
         {
             if (SelectedSeason != null)
@@ -364,21 +375,60 @@ namespace HackyStaty03.ViewModels
             //fileStream.SetLength(0);
             //fileStream.Close(); // This flushes the content, too.
         }
+
+        private OWRoot SortMainOWRoot() 
+        {
+            OWRoot mainOWRootSorted = new OWRoot();
+            Season? currentSeason = null;
+            League? currentLeague = null;
+            Division? currentDivision = null;
+            Team? currentTeam = null;
+
+            foreach (Season season in MainOWRoot.Children.OrderBy(x => x.Name))
+            {
+                currentSeason = new Season { Name = season.Name, GuidId = season.GuidId, OWHAId = season.OWHAId, Children = new ObservableCollection<League>() };
+                
+                //mainOWRootSorted.Children.Add(new Season { Name = season.Name,GuidId=season.GuidId,OWHAId=season.OWHAId,Children=new ObservableCollection<League>() });
+
+                foreach (League league in season.Children.OrderByDescending(x => x.Name)) 
+                {
+                    currentLeague = new League { Name = league.Name, GuidId = league.GuidId, OWHAId = league.OWHAId, Children = new ObservableCollection<Division>() };
+                    currentSeason.Children.Add(currentLeague);
+
+                    foreach (Division division in league.Children.OrderByDescending(x => x.Name)) 
+                    {
+                        currentDivision = new Division { Name = division.Name, GuidId = division.GuidId, OWHAId = division.OWHAId, Children = new ObservableCollection<Team>() }; 
+                        currentLeague.Children.Add(currentDivision);
+
+                        foreach (Team team in division.Children.OrderBy(x=>x.Name))
+                        {
+                            currentTeam = new Team { Name = team.Name, GuidId = team.GuidId, OWHAId = team.OWHAId };
+                            currentDivision.Children.Add(currentTeam);
+                        }
+                    }                
+                }
+                mainOWRootSorted.Children.Add(currentSeason);
+            }
+
+            return mainOWRootSorted;
+        }
+
         public void WriteData()
         {
+          OWRoot sortedOWRoot =  SortMainOWRoot();
             CurrentDataFile = Path.Combine(CurrentDataPath, $"{DateTime.Now.ToString("yyyyMMddHHmmssffff")}_seasons.json");
             Properties.HackyStatySetting.Default.LatestJson = CurrentDataFile;
 
             using (System.IO.StreamWriter file5 = new System.IO.StreamWriter(CurrentDataFile, true))
             {
-                string owRoot = System.Text.Json.JsonSerializer.Serialize(MainOWRoot);
+                string owRoot = System.Text.Json.JsonSerializer.Serialize(sortedOWRoot);
                 file5.WriteLine(owRoot);
             }
         }
 
         [RelayCommand]
-        public void Save2DataStore() 
-        { 
+        public void Save2DataStore()
+        {
             WriteData();
             Properties.HackyStatySetting.Default.Save();
         }
@@ -396,7 +446,7 @@ namespace HackyStaty03.ViewModels
         }
 
         [RelayCommand]
-        public async void PrintStatistics()
+        public async Task PrintStatistics()
         {
             string dateGuid = DateTime.Now.ToString("yyyy.MM.dd");
             if ((PlayerStats != null && PlayerStats.Count > 0))
@@ -813,7 +863,7 @@ namespace HackyStaty03.ViewModels
                 if (System.Windows.MessageBox.Show($"Are you sure? This action will remove all children.", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     StatusMessage = "Deleting League...";
-                    League league2Remove = SelectedSeason.Children.Where(x => x.GuidId == SelectedLeague.GuidId).FirstOrDefault();
+                    League league2Remove = SelectedSeason.Children.FirstOrDefault(x => x.GuidId == SelectedLeague.GuidId);
                     SelectedSeason.Children.Remove(league2Remove);
                     SelectedDivision = null;
                     SelectedTeam = null;
@@ -850,7 +900,7 @@ namespace HackyStaty03.ViewModels
                 if (System.Windows.MessageBox.Show($"Are you sure?", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
                     StatusMessage = "Deleting Team...";
-                    Team team2Remove = SelectedDivision.Children.Where(x => x.GuidId == SelectedTeam.GuidId).FirstOrDefault();
+                    Team? team2Remove = SelectedDivision.Children.FirstOrDefault(x => x.GuidId == SelectedTeam.GuidId);
                     SelectedDivision.Children.Remove(team2Remove);
                     DataModified = true;
                     StatusMessage = "Ready";
@@ -901,6 +951,10 @@ namespace HackyStaty03.ViewModels
             {
                 case "CurrentDataFile":
                     openFD.Filter = "json files (*.json)|*.json|All files (*.*)|*.*";
+                    if (System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(CurrentDataFile)))
+                    {
+                        openFD.InitialDirectory = System.IO.Path.GetDirectoryName(CurrentDataFile);
+                    }
                     break;
                 case "FileOne":
                     openFD.Filter = "db files (*.db)|*.db|All files (*.*)|*.*";

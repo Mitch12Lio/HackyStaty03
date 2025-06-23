@@ -20,7 +20,7 @@ namespace HackyStaty03.Models
         public int CATID { get; set; }
         public bool committed { get; set; }
         public int DID { get; set; }
-        public string fname { get; set; }
+        public string fname { get; set; } = string.Empty;
         public int G { get; set; }
         public int GP { get; set; }
         public int GTID { get; set; }
@@ -28,12 +28,12 @@ namespace HackyStaty03.Models
         public bool import { get; set; }
         public bool injured { get; set; }
         public int jersey { get; set; }
-        public string lname { get; set; }
+        public string lname { get; set; } = string.Empty;
         public int pagecount { get; set; }
         public int PID { get; set; }
         public int PIM { get; set; }
         public float PIMx { get; set; }
-        public string PIMs { get; set; }
+        public string PIMs { get; set; } = string.Empty;
         public double PIMd { get; set; }
         public int PitchCount { get; set; }
         public int PPG { get; set; }
@@ -43,14 +43,14 @@ namespace HackyStaty03.Models
         public int SHG { get; set; }
         public int SID { get; set; }
         public bool suspended { get; set; }
-        public string seasonName { get; set; }
-        public string leagueName { get; set; }
-        public string divisionName { get; set; }
-        public string TeamName { get; set; }
-        public string createdTeamName { get; set; }
+        public string seasonName { get; set; } = string.Empty;
+        public string leagueName { get; set; } = string.Empty;
+        public string divisionName { get; set; } = string.Empty;
+        public string TeamName { get; set; } = string.Empty;
+        public string createdTeamName { get; set; } = string.Empty;
         public int TID { get; set; }
         public int totalrecords { get; set; }
-        public string Position { get; set; }
+        public string Position { get; set; } = string.Empty;
         public int Touchdowns { get; set; }
         public int Sacks { get; set; }
         public int Interceptions { get; set; }
