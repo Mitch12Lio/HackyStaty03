@@ -13,7 +13,7 @@ namespace HackyStaty03
     {
         public App()
         {
-            ServiceCollection serviceCollection = new ServiceCollection();
+            ServiceCollection serviceCollection = new();
             serviceCollection.ConfigureServices();
 
             ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();

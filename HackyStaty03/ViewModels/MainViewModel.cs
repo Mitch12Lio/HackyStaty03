@@ -75,8 +75,8 @@ namespace HackyStaty03.ViewModels
 
 
         //[ObservableProperty]
-        private OWRoot mainOWRoot = new OWRoot();
-        public OWRoot MainOWRoot
+        private OWRoot? mainOWRoot = new();
+        public OWRoot? MainOWRoot
         {
             get
             {
@@ -100,7 +100,7 @@ namespace HackyStaty03.ViewModels
             }
         }
 
-        private Season? selectedSeason;
+        private Season? selectedSeason = new();
         public Season? SelectedSeason
         {
             get
@@ -115,7 +115,7 @@ namespace HackyStaty03.ViewModels
                     if (selectedSeason != null)
                     {
                         if (HasChildren(selectedSeason.Children))
-                        {                          
+                        {
                             SelectedLeague = selectedSeason.Children[0];
                         }
                         ModifiedSeasonName = selectedSeason.Name;
@@ -204,16 +204,13 @@ namespace HackyStaty03.ViewModels
         #region Random Properties
 
 
-        private bool HasChildren<T>(ObservableCollection<T>? children)
+        private static bool HasChildren<T>(ObservableCollection<T>? children)
         {
             if ((children != null) && (children.Count > 0))
             {
                 return true;
             }
             else { return false; }
-
-
-
         }
 
         private string printLocation = Properties.HackyStatySetting.Default.PrintLocation;
@@ -236,15 +233,15 @@ namespace HackyStaty03.ViewModels
         }
 
         [ObservableProperty]
-        private string currentStatisticURL;
+        private string currentStatisticURL = string.Empty;
 
         #endregion
 
         [ObservableProperty]
-        private List<PlayerStats> fullPlayerStats;
+        private List<PlayerStats>? fullPlayerStats;
 
         [ObservableProperty]
-        private ObservableCollection<PlayerStats> playerStats;
+        private ObservableCollection<PlayerStats>? playerStats = [];
 
         #endregion
 
@@ -254,52 +251,45 @@ namespace HackyStaty03.ViewModels
         }
 
         #region Startup/Shutdown
-      
+
         [RelayCommand]
         public void LoadEverything()
         {
             CurrentDataFile = Properties.HackyStatySetting.Default.LatestJson;
             if (File.Exists(CurrentDataFile))
             {
-                System.Text.Json.JsonSerializerOptions jsonOptions = new System.Text.Json.JsonSerializerOptions();
-                jsonOptions.WriteIndented = true;
-
-                using (var reader = new System.IO.StreamReader(CurrentDataFile))
+                System.Text.Json.JsonSerializerOptions jsonOptions = new()
                 {
-                    while (!reader.EndOfStream)
-                    {                        
-                        string? jSonString = reader.ReadLine();
+                    WriteIndented = true
+                };
+
+                using var reader = new System.IO.StreamReader(CurrentDataFile);
+                while (!reader.EndOfStream)
+                {
+                    string? jSonString = reader.ReadLine();
+                    if (!String.IsNullOrEmpty(jSonString))
+                    {
                         MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
                     }
-
-                    if (HasChildren(MainOWRoot.Children))
-                    {                     
+                }
+                if (MainOWRoot != null)
+                {
+                    if (HasChildren(children: MainOWRoot.Children))
+                    {
                         SelectedSeason = MainOWRoot.Children.FirstOrDefault(x => x.GuidId == Properties.HackyStatySetting.Default.LastSelectedSeasonGuid);
-                        if (SelectedSeason == null)
-                        {
-                            SelectedSeason = MainOWRoot.Children[0];
-                        }
+                        SelectedSeason ??= MainOWRoot.Children[0];
                         if (HasChildren(SelectedSeason.Children))
                         {
                             SelectedLeague = SelectedSeason.Children.FirstOrDefault(x => x.GuidId == Properties.HackyStatySetting.Default.LastSelectedLeagueGuid);
-                            if (SelectedLeague == null)
-                            {
-                                SelectedLeague = SelectedSeason.Children[0];
-                            }
+                            SelectedLeague ??= SelectedSeason.Children[0];
                             if (HasChildren(SelectedLeague.Children))
                             {
                                 SelectedDivision = SelectedLeague.Children.FirstOrDefault(x => x.GuidId == Properties.HackyStatySetting.Default.LastSelectedDivisionGuid);
-                                if (SelectedDivision == null)
-                                {
-                                    SelectedDivision = SelectedLeague.Children[0];
-                                }
+                                SelectedDivision ??= SelectedLeague.Children[0];
                                 if (HasChildren(SelectedDivision.Children))
                                 {
                                     SelectedTeam = SelectedDivision.Children.FirstOrDefault(x => x.GuidId == Properties.HackyStatySetting.Default.LastSelectedTeamGuid);
-                                    if (SelectedTeam == null)
-                                    {
-                                        SelectedTeam = SelectedDivision.Children[0];
-                                    }
+                                    SelectedTeam ??= SelectedDivision.Children[0];
                                 }
                                 else
                                 {
@@ -335,9 +325,9 @@ namespace HackyStaty03.ViewModels
             // Handle closing logic, set e.Cancel as needed
             SaveClosingProperties();
             ClearDataFileContent();
-            
+
             if (DataModified)
-            {                
+            {
                 WriteData();
             }
             Properties.HackyStatySetting.Default.Save();
@@ -362,7 +352,7 @@ namespace HackyStaty03.ViewModels
                 }
             }
         }
-        private void ClearDataFileContent()
+        private static void ClearDataFileContent()
         {
             //FileStream fileStream = File.Open(jsonFileSeason, FileMode.Open);
             ///* 
@@ -376,54 +366,52 @@ namespace HackyStaty03.ViewModels
             //fileStream.Close(); // This flushes the content, too.
         }
 
-        private OWRoot SortMainOWRoot() 
+        private OWRoot SortMainOWRoot()
         {
-            OWRoot mainOWRootSorted = new OWRoot();
-            Season? currentSeason = null;
-            League? currentLeague = null;
-            Division? currentDivision = null;
-            Team? currentTeam = null;
+            OWRoot mainOWRootSorted = new();
 
-            foreach (Season season in MainOWRoot.Children.OrderBy(x => x.Name))
+            if (MainOWRoot != null)
             {
-                currentSeason = new Season { Name = season.Name, GuidId = season.GuidId, OWHAId = season.OWHAId, Children = new ObservableCollection<League>() };
-                
-                //mainOWRootSorted.Children.Add(new Season { Name = season.Name,GuidId=season.GuidId,OWHAId=season.OWHAId,Children=new ObservableCollection<League>() });
+                Season? currentSeason = null;
+                League? currentLeague = null;
+                Division? currentDivision = null;
+                Team? currentTeam = null;
 
-                foreach (League league in season.Children.OrderByDescending(x => x.Name)) 
+                foreach (Season season in MainOWRoot.Children.OrderBy(x => x.Name))
                 {
-                    currentLeague = new League { Name = league.Name, GuidId = league.GuidId, OWHAId = league.OWHAId, Children = new ObservableCollection<Division>() };
-                    currentSeason.Children.Add(currentLeague);
-
-                    foreach (Division division in league.Children.OrderByDescending(x => x.Name)) 
+                    currentSeason = new Season { Name = season.Name, GuidId = season.GuidId, OWHAId = season.OWHAId, Children = [] };
+                    foreach (League league in season.Children.OrderByDescending(x => x.Name))
                     {
-                        currentDivision = new Division { Name = division.Name, GuidId = division.GuidId, OWHAId = division.OWHAId, Children = new ObservableCollection<Team>() }; 
-                        currentLeague.Children.Add(currentDivision);
+                        currentLeague = new League { Name = league.Name, GuidId = league.GuidId, OWHAId = league.OWHAId, Children = [] };
+                        currentSeason.Children.Add(currentLeague);
 
-                        foreach (Team team in division.Children.OrderBy(x=>x.Name))
+                        foreach (Division division in league.Children.OrderByDescending(x => x.Name))
                         {
-                            currentTeam = new Team { Name = team.Name, GuidId = team.GuidId, OWHAId = team.OWHAId };
-                            currentDivision.Children.Add(currentTeam);
-                        }
-                    }                
-                }
-                mainOWRootSorted.Children.Add(currentSeason);
-            }
+                            currentDivision = new Division { Name = division.Name, GuidId = division.GuidId, OWHAId = division.OWHAId, Children = [] };
+                            currentLeague.Children.Add(currentDivision);
 
+                            foreach (Team team in division.Children.OrderBy(x => x.Name))
+                            {
+                                currentTeam = new Team { Name = team.Name, GuidId = team.GuidId, OWHAId = team.OWHAId };
+                                currentDivision.Children.Add(currentTeam);
+                            }
+                        }
+                    }
+                    mainOWRootSorted.Children.Add(currentSeason);
+                }
+            }
             return mainOWRootSorted;
         }
 
         public void WriteData()
         {
-          OWRoot sortedOWRoot =  SortMainOWRoot();
-            CurrentDataFile = Path.Combine(CurrentDataPath, $"{DateTime.Now.ToString("yyyyMMddHHmmssffff")}_seasons.json");
+            OWRoot sortedOWRoot = SortMainOWRoot();
+            CurrentDataFile = Path.Combine(CurrentDataPath, $"{DateTime.Now:yyyyMMddHHmmssffff}_seasons.json");
             Properties.HackyStatySetting.Default.LatestJson = CurrentDataFile;
 
-            using (System.IO.StreamWriter file5 = new System.IO.StreamWriter(CurrentDataFile, true))
-            {
-                string owRoot = System.Text.Json.JsonSerializer.Serialize(sortedOWRoot);
-                file5.WriteLine(owRoot);
-            }
+            using System.IO.StreamWriter file5 = new(CurrentDataFile, true);
+            string owRoot = System.Text.Json.JsonSerializer.Serialize(sortedOWRoot);
+            file5.WriteLine(owRoot);
         }
 
         [RelayCommand]
@@ -439,42 +427,43 @@ namespace HackyStaty03.ViewModels
         [RelayCommand]
         public void ClearStatistics()
         {
-            if (PlayerStats != null)
-            {
-                PlayerStats.Clear();
-            }
+            PlayerStats?.Clear();
         }
 
         [RelayCommand]
         public async Task PrintStatistics()
         {
             string dateGuid = DateTime.Now.ToString("yyyy.MM.dd");
-            if ((PlayerStats != null && PlayerStats.Count > 0))
-            {
-                StatusMessage = "Printing...";
-                await Task.Run(() =>
-                {
-                    using (System.IO.StreamWriter file4 = new System.IO.StreamWriter(PrintLocation + Path.DirectorySeparatorChar + PlayerStats.FirstOrDefault().TeamName + "_" + dateGuid + ".csv", true))
-                    {
-                        file4.WriteLine();
-                        file4.WriteLine($"{SelectedSeason.Name} - {SelectedLeague.Name} - {SelectedDivision.Name} - {SelectedTeam.Name}");
-                        file4.WriteLine(PlayerStats.FirstOrDefault().TeamName);
-                        file4.WriteLine();
-                        file4.WriteLine("#" + "," + "Name" + "," + "GP" + "," + "G" + "," + "A" + "," + "PTS" + "," + "PIM");
-                        file4.WriteLine();
 
-                        foreach (Models.PlayerStats playerStats in this.PlayerStats)
-                        {
-                            file4.WriteLine(playerStats.jersey + "," + playerStats.fname + " " + playerStats.lname + "," + playerStats.GP + "," + playerStats.G + "," + playerStats.A + "," + playerStats.PTS + "," + playerStats.PIMd);
-                        }
-                    }
-                });
-                StatusMessage = "Ready";
-            }
-            else
+            StatusMessage = "Printing...";
+            await Task.Run(() =>
             {
-                StatusMessage = "Player Stats is null or empty.";
-            }
+                //if (IsAllSelected())
+                //{
+                if ((PlayerStats != null && PlayerStats.Count > 0))
+                {
+                    using System.IO.StreamWriter file4 = new(path: $"{PrintLocation}{Path.DirectorySeparatorChar}{PlayerStats?.FirstOrDefault()?.TeamName}_{dateGuid}.csv", append: true);
+                    file4.WriteLine();
+                    file4.WriteLine($"{SelectedSeason?.Name} - {SelectedLeague?.Name} - {SelectedDivision?.Name} - {SelectedTeam?.Name}");
+                    file4.WriteLine(value: PlayerStats?.FirstOrDefault()?.TeamName);
+                    file4.WriteLine();
+                    file4.WriteLine("#" + "," + "Name" + "," + "GP" + "," + "G" + "," + "A" + "," + "PTS" + "," + "PIM");
+                    file4.WriteLine();
+
+                    foreach (PlayerStats playerStats in PlayerStats)
+                    {
+                        file4.WriteLine(playerStats.jersey + "," + playerStats.fname + " " + playerStats.lname + "," + playerStats.GP + "," + playerStats.G + "," + playerStats.A + "," + playerStats.PTS + "," + playerStats.PIMd);
+                    }
+
+                }
+                else
+                {
+                    StatusMessage = "Player Stats is null or empty.";
+                }
+            });
+            StatusMessage = "Ready";
+
+
         }
 
         [RelayCommand]
@@ -483,68 +472,65 @@ namespace HackyStaty03.ViewModels
             if ((SelectedSeason != null) && (SelectedLeague != null) && (SelectedDivision != null) && (SelectedTeam != null))
             {
                 StatusMessage = "Fetching...";
-                PlayerStats = new ObservableCollection<PlayerStats>();
+                PlayerStats = [];
 
-                using (var httpClient = new System.Net.Http.HttpClient())
+                using var httpClient = new System.Net.Http.HttpClient();
+                //var json = await httpClient.GetStringAsync(@"https://api.rampinteractive.com/players/getplayerstats/2787/8999/15688/0/193569");
+
+                string daIds = $"{SelectedSeason.OWHAId}/{SelectedLeague.OWHAId}/{SelectedDivision.OWHAId}/0/{SelectedTeam.OWHAId}";
+
+                string link = $"https://api.rampinteractive.com/players/getplayerstats/{daIds}";
+
+                var json = await httpClient.GetStringAsync(link);
+
+                System.Text.Json.Nodes.JsonNode parsedJSon = System.Text.Json.Nodes.JsonNode.Parse(json);
+                var options = new System.Text.Json.JsonSerializerOptions { WriteIndented = true };
+                System.Text.Json.Nodes.JsonArray jsonArray = parsedJSon.AsArray();
+
+                if (jsonArray.Count > 0)
                 {
-                    //var json = await httpClient.GetStringAsync(@"https://api.rampinteractive.com/players/getplayerstats/2787/8999/15688/0/193569");
+                    string teamName = jsonArray[1]!["TeamName"].ToString();
 
-                    string daIds = $"{SelectedSeason.OWHAId}/{SelectedLeague.OWHAId}/{SelectedDivision.OWHAId}/0/{SelectedTeam.OWHAId}";
+                    string teamNameNoSpace = teamName.Replace(" ", "");
 
-                    string link = $"https://api.rampinteractive.com/players/getplayerstats/{daIds}";
-
-                    var json = await httpClient.GetStringAsync(link);
-
-                    System.Text.Json.Nodes.JsonNode parsedJSon = System.Text.Json.Nodes.JsonNode.Parse(json);
-                    var options = new System.Text.Json.JsonSerializerOptions { WriteIndented = true };
-                    System.Text.Json.Nodes.JsonArray jsonArray = parsedJSon.AsArray();
-
-                    if (jsonArray.Count > 0)
+                    int customRank = 1;
+                    foreach (System.Text.Json.Nodes.JsonNode? jsonItem in jsonArray)
                     {
-                        string teamName = jsonArray[1]!["TeamName"].ToString();
-                        string teamNameNoSpace = teamName.Replace(" ", "");
-
-                        int customRank = 1;
-                        foreach (System.Text.Json.Nodes.JsonNode jsonItem in jsonArray)
+                        PlayerStats newPlayerStats = new()
                         {
-                            PlayerStats newPlayerStats = new PlayerStats();
-
-                            newPlayerStats.TeamName = teamNameNoSpace;
-
-                            newPlayerStats.PID = (int)jsonItem!["PID"];
-
-                            newPlayerStats.rank = customRank;
-                            if (jsonItem!["jersey"] == null)
-                            {
-                                newPlayerStats.jersey = 0;
-                            }
-                            else
-                            {
-                                newPlayerStats.jersey = (int)jsonItem!["jersey"];
-                            }
-                            newPlayerStats.fname = System.Web.HttpUtility.HtmlDecode(jsonItem!["fname"].ToString());
-                            newPlayerStats.lname = System.Web.HttpUtility.HtmlDecode(jsonItem!["lname"].ToString());
-                            newPlayerStats.GP = (int)jsonItem!["GP"];
-                            newPlayerStats.G = (int)jsonItem!["G"];
-                            newPlayerStats.A = (int)jsonItem!["A"];
-                            newPlayerStats.PTS = (int)jsonItem!["PTS"];
-                            var whatString = jsonItem!["PIM"].ToString();
-                            newPlayerStats.PIMs = whatString;
-                            newPlayerStats.PIMd = Convert.ToDouble(whatString);
-
-                            PlayerStats.Add(newPlayerStats);
-
-                            customRank++;
+                            TeamName = teamNameNoSpace,
+                            PID = (int)jsonItem!["PID"],
+                            rank = customRank
+                        };
+                        if (jsonItem!["jersey"] == null)
+                        {
+                            newPlayerStats.jersey = 0;
                         }
-                        StatusMessage = "Ready";
-                    }
-                    else
-                    {
-                        StatusMessage = "Empty";
-                    }
-                    CurrentStatisticURL = link;
+                        else
+                        {
+                            newPlayerStats.jersey = (int)jsonItem!["jersey"];
+                        }
+                        newPlayerStats.fname = System.Web.HttpUtility.HtmlDecode(jsonItem!["fname"].ToString());
+                        newPlayerStats.lname = System.Web.HttpUtility.HtmlDecode(jsonItem!["lname"].ToString());
+                        newPlayerStats.GP = (int)jsonItem!["GP"];
+                        newPlayerStats.G = (int)jsonItem!["G"];
+                        newPlayerStats.A = (int)jsonItem!["A"];
+                        newPlayerStats.PTS = (int)jsonItem!["PTS"];
+                        var whatString = jsonItem!["PIM"].ToString();
+                        newPlayerStats.PIMs = whatString;
+                        newPlayerStats.PIMd = Convert.ToDouble(whatString);
 
+                        PlayerStats.Add(newPlayerStats);
+
+                        customRank++;
+                    }
+                    StatusMessage = "Ready";
                 }
+                else
+                {
+                    StatusMessage = "Empty";
+                }
+                CurrentStatisticURL = link;
             }
             else
             {
@@ -563,6 +549,11 @@ namespace HackyStaty03.ViewModels
             System.Windows.Clipboard.SetText(CurrentStatisticURL);
         }
 
+        private bool IsAllSelected()
+        {
+            return ((SelectedSeason != null) && (SelectedLeague != null) && (SelectedDivision != null) && (SelectedTeam != null));
+        }
+
         #endregion
 
         #region Core Functions
@@ -573,7 +564,7 @@ namespace HackyStaty03.ViewModels
             if (SeasonAdditionCheck())
             {
                 StatusMessage = "Adding Season...";
-                Season newSeason = new Season { Name = NewSeasonName, OWHAId = NewSeasonId, GuidId = Guid.NewGuid() };
+                Season newSeason = new() { Name = NewSeasonName, OWHAId = NewSeasonId, GuidId = Guid.NewGuid() };
                 MainOWRoot.Children.Add(newSeason);
                 SelectedSeason = newSeason;
                 DataModified = true;
@@ -627,7 +618,7 @@ namespace HackyStaty03.ViewModels
             if (LeagueAdditionCheck())
             {
                 StatusMessage = "Adding League...";
-                League newLeague = new League { Name = NewLeagueName, OWHAId = NewLeagueId, GuidId = Guid.NewGuid() };
+                League newLeague = new() { Name = NewLeagueName, OWHAId = NewLeagueId, GuidId = Guid.NewGuid() };
                 SelectedSeason.Children.Add(newLeague);
                 SelectedLeague = newLeague;
                 DataModified = true;
@@ -681,7 +672,7 @@ namespace HackyStaty03.ViewModels
             if (DivisionAdditionCheck())
             {
                 StatusMessage = "Adding Division...";
-                Division newDivision = new Division { Name = NewDivisionName, OWHAId = NewDivisionId, GuidId = Guid.NewGuid() };
+                Division newDivision = new() { Name = NewDivisionName, OWHAId = NewDivisionId, GuidId = Guid.NewGuid() };
                 SelectedLeague.Children.Add(newDivision);
                 SelectedDivision = newDivision;
                 DataModified = true;
@@ -737,7 +728,7 @@ namespace HackyStaty03.ViewModels
             if (TeamAdditionCheck())
             {
                 StatusMessage = "Adding Division...";
-                Team newTeam = new Team { Name = NewTeamName, OWHAId = NewTeamId, GuidId = Guid.NewGuid() };
+                Team newTeam = new() { Name = NewTeamName, OWHAId = NewTeamId, GuidId = Guid.NewGuid() };
                 SelectedDivision.Children.Add(newTeam);
                 SelectedTeam = newTeam;
                 DataModified = true;
@@ -840,17 +831,21 @@ namespace HackyStaty03.ViewModels
         {
             if (SelectedSeason != null)
             {
-                if (System.Windows.MessageBox.Show($"Are you sure? This action will remove all children.", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                Season? season2Rmove = MainOWRoot.Children.FirstOrDefault(x => x.GuidId == SelectedSeason.GuidId);
+                if (season2Rmove != null)
                 {
-                    StatusMessage = "Deleting Season...";
-                    Season season2Rmove = MainOWRoot.Children.Where(x => x.GuidId == SelectedSeason.GuidId).FirstOrDefault();
-                    MainOWRoot.Children.Remove(season2Rmove);
-                    SelectedLeague = null;
-                    SelectedDivision = null;
-                    SelectedTeam = null;
-                    DataModified = true;
-                    StatusMessage = "Ready";
+                    if (System.Windows.MessageBox.Show($"Are you sure? This action will remove all children.", "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        StatusMessage = "Deleting Season...";
+                        MainOWRoot.Children.Remove(season2Rmove);
+                        SelectedLeague = null;
+                        SelectedDivision = null;
+                        SelectedTeam = null;
+                        DataModified = true;
+                        StatusMessage = "Ready";
+                    }
                 }
+                else { StatusMessage = "Nothing to delete."; }
             }
             else { StatusMessage = "Nothing to delete."; }
         }
@@ -945,7 +940,7 @@ namespace HackyStaty03.ViewModels
         public void SetFile(object obj)
         {
             bool exit = false;
-            Microsoft.Win32.OpenFileDialog openFD = new Microsoft.Win32.OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog openFD = new();
 
             switch (obj.ToString())
             {
@@ -994,7 +989,7 @@ namespace HackyStaty03.ViewModels
         [RelayCommand]
         public void SetFolder(object obj)
         {
-            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new();
             switch (obj.ToString())
             {
                 case "PrintLocation":

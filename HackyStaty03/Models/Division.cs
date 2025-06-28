@@ -13,6 +13,6 @@ namespace HackyStaty03.Models
         public Guid GuidId { get; set; }
         public string Name { get; set; } = string.Empty;
         public int OWHAId { get; set; }
-        public ObservableCollection<Team> Children { get; set; } = new ObservableCollection<Team>();
+        public ObservableCollection<Team> Children { get; set; } = [];
     }
 }

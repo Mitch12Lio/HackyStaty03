@@ -76,38 +76,29 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="0" Grid.Column="0" Content="File..." CommandParameter="CurrentDataFile" Command="{Binding SetFileCommand}"></Button>
-                            <Button Grid.Row="0" Grid.Column="1" Content="Open" CommandParameter="CurrentDataPath" Command="{Binding OpenWindowsExplorerCommand}"></Button>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Column="0" Grid.Row="0" Content="(Re)Load" Command="{Binding LoadEverythingCommand}"></Button>
-                            <Button Grid.Column="1" Grid.Row="0" Content="Save 2 DataStore" Command="{Binding Save2DataStoreCommand}"></Button>
-                            <CheckBox Grid.Column="2" Grid.Row="0" Content="Force Write on Close"></CheckBox>
-                        </Grid>
+                            <Button Grid.Row="0" Grid.Column="0" Content="File..." CommandParameter="CurrentDataFile" Command="{Binding SetFileCommand}"></Button>
+                            <Button Grid.Row="0" Grid.Column="1" Content="Open" CommandParameter="CurrentDataPath" Command="{Binding OpenWindowsExplorerCommand}"></Button>
+                            <Button Grid.Column="2" Grid.Row="0" Content="Save 2 New DataStore" Command="{Binding Save2DataStoreCommand}"></Button>
+                            <CheckBox Grid.Column="3" Grid.Row="0" Content="Force Write on Close" ToolTip="App does not save data on close if there were no modifications."></CheckBox>
+                        </Grid>                       
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
         </Expander>
-        <TabControl>
-        
+        <TabControl>        
             <TabItem Header="Execute">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -399,7 +390,18 @@
                             </Grid>                          
                         </StackPanel>
                     </GroupBox>
-                    <GroupBox Grid.Row="2" Grid.Column="0" BorderThickness="3">
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Column="0" Grid.Row="0" Content="(Re)Load Teams" Command="{Binding LoadEverythingCommand}"></Button>
+                        <Button Grid.Row="0" Grid.Column="1" Content="Fetch Stats'" Command="{Binding FetchStatisticsCommand}"></Button>
+                    </Grid>
+                    <GroupBox Grid.Row="3" Grid.Column="0" BorderThickness="3">
                         <GroupBox.Header>
                             <Span FontWeight="DemiBold">Statistics</Span>
                         </GroupBox.Header>
@@ -563,14 +565,12 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
-                                <Button Grid.Row="0" Grid.Column="0" Content="Fetch" Command="{Binding FetchStatisticsCommand}"></Button>
-                                <Button Grid.Row="0" Grid.Column="1" Content="Clear" Command="{Binding ClearStatisticsCommand}"></Button>
-                                <Button Grid.Row="0" Grid.Column="2" Content="Print" Command="{Binding PrintStatisticsCommand}"></Button>
+                                <Button Grid.Row="0" Grid.Column="0" Content="Clear" Command="{Binding ClearStatisticsCommand}"></Button>
+                                <Button Grid.Row="0" Grid.Column="1" Content="Print" Command="{Binding PrintStatisticsCommand}"></Button>
                             </Grid>
                         </Grid>
 
@@ -685,14 +685,11 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                        <!--<ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding DivisionLst}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDivision,Mode=TwoWay}"></ComboBox>-->
                                         <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedLeague.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDivision,Mode=TwoWay}"></ComboBox>
-
                                     </Grid>
                                     <Label Content="Rename"></Label>
                                     <TextBox Text="{Binding ModifiedDivisionName}"></TextBox>
@@ -721,12 +718,10 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
-                                        <!--<ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding TeamLst}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTeam,Mode=TwoWay}"></ComboBox>-->
                                         <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedDivision.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTeam,Mode=TwoWay}"></ComboBox>
                                     </Grid>
                                     <Label Content="Rename"></Label>
@@ -735,7 +730,6 @@
                                 </StackPanel>
                             </GroupBox>
                         </Grid>
-                        <!--<Button Content="(Re)Load" Command="{Binding LoadEverythingCommand}"></Button>-->
                     </StackPanel>
                 </GroupBox>
             </TabItem>
