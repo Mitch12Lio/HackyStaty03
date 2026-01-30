@@ -744,7 +744,12 @@
                     </TreeView.ItemTemplate>
                 </TreeView>
             </TabItem>
-            <TabItem Header="Totals"></TabItem>
+            <TabItem Header="Totals">
+                <StackPanel>
+                    <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding AllTeams}" DisplayMemberPath="DisplayName" SelectedItem="{Binding AllStatsTeam,Mode=TwoWay}"></ComboBox>
+                    <Button Content="FetchAllStats" Command="{Binding FetchAllStatisticsCommand}"></Button>
+                </StackPanel>
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>

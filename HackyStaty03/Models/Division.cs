@@ -9,7 +9,7 @@ namespace HackyStaty03.Models
 {
     public class Division
     {
-        public Season? ParentLeague { get; set; } = null;
+        public League? ParentLeague { get; set; } = null;
         public Guid GuidId { get; set; }
         public string Name { get; set; } = string.Empty;
         public int OWHAId { get; set; }

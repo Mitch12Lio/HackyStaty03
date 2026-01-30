@@ -42,6 +42,32 @@ namespace HackyStaty03.ViewModels
         #region Core Properties
 
         [ObservableProperty]
+        ObservableCollection<Team> allTeams = new ObservableCollection<Team>();
+
+        [ObservableProperty]
+        ObservableCollection<Team> distinctTeams = new ObservableCollection<Team>();
+
+        //[ObservableProperty]
+        //Team? allStatsTeam = null;
+        private Team? allStatsTeam = null;
+        public Team? AllStatsTeam
+        {
+            get
+            {
+                return allStatsTeam;
+            }
+            set
+            {
+                if (allStatsTeam != value)
+                {
+                    allStatsTeam = value;
+                    OnPropertyChanged(nameof(AllStatsTeam));
+                }
+            }
+        }
+
+
+        [ObservableProperty]
         private String newSeasonName = String.Empty;
         [ObservableProperty]
         private int newSeasonId = 0;
@@ -87,14 +113,6 @@ namespace HackyStaty03.ViewModels
                 if (mainOWRoot != value)
                 {
                     mainOWRoot = value;
-                    //if (mainOWRoot != null)
-                    //{
-                    //    if (HasChildren(mainOWRoot.Children))
-                    //    {
-                    //        SelectedSeason = mainOWRoot.Children[0];
-                    //    }
-                    //    //ModifiedSeasonName = selectedSeason.Name;
-                    //}
                     OnPropertyChanged(nameof(MainOWRoot));
                 }
             }
@@ -203,7 +221,6 @@ namespace HackyStaty03.ViewModels
 
         #region Random Properties
 
-
         private static bool HasChildren<T>(ObservableCollection<T>? children)
         {
             if ((children != null) && (children.Count > 0))
@@ -252,6 +269,35 @@ namespace HackyStaty03.ViewModels
 
         #region Startup/Shutdown
 
+        private void GatherAllTeams()
+        {
+            //ObservableCollection<Team> distinctTeams = new ObservableCollection<Team>();
+            if (MainOWRoot != null)
+            {
+                foreach (Season season in MainOWRoot.Children)
+                {
+                    season.ParentRoot = MainOWRoot;
+                    foreach (League league in season.Children)
+                    {
+                        league.ParentSeason = season;
+                        foreach (Division division in league.Children)
+                        {
+                            division.ParentLeague = league;
+                            foreach (Team team in division.Children)
+                            {
+                                team.ParentDivision = division;
+                                AllTeams.Add(team);
+                            }
+                        }
+                    }
+                }
+            }
+
+            DistinctTeams = new ObservableCollection<Team>(AllTeams.DistinctBy(p => p.OWHAId).OrderBy(x => x.Name));
+            int teamcount = AllTeams.Count;
+            int x = 0;
+        }
+
         [RelayCommand]
         public void LoadEverything()
         {
@@ -272,6 +318,10 @@ namespace HackyStaty03.ViewModels
                         MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
                     }
                 }
+
+                GatherAllTeams();
+
+                //Setup the combobox hierarchy
                 if (MainOWRoot != null)
                 {
                     if (HasChildren(children: MainOWRoot.Children))
@@ -466,9 +516,73 @@ namespace HackyStaty03.ViewModels
 
         }
 
+        private async Task<ObservableCollection<PlayerStats>>? HitAPI(Season season, League league, Division division, Team team)
+        {
+            ObservableCollection<PlayerStats>? partialPlayerStats = new ObservableCollection<PlayerStats>();
+            partialPlayerStats = [];
+
+            using var httpClient = new System.Net.Http.HttpClient();
+            //var json = await httpClient.GetStringAsync(@"https://api.rampinteractive.com/players/getplayerstats/2787/8999/15688/0/193569");
+
+            string daIds = $"{season.OWHAId}/{league.OWHAId}/{division.OWHAId}/0/{team.OWHAId}";
+
+            string link = $"https://api.rampinteractive.com/players/getplayerstats/{daIds}";
+
+            var json = await httpClient.GetStringAsync(link);
+
+            System.Text.Json.Nodes.JsonNode parsedJSon = System.Text.Json.Nodes.JsonNode.Parse(json);
+            var options = new System.Text.Json.JsonSerializerOptions { WriteIndented = true };
+            System.Text.Json.Nodes.JsonArray jsonArray = parsedJSon.AsArray();
+
+            if (jsonArray.Count > 0)
+            {
+                string teamName = jsonArray[1]!["TeamName"].ToString();
+
+                string teamNameNoSpace = teamName.Replace(" ", "");
+
+                int customRank = 1;
+                foreach (System.Text.Json.Nodes.JsonNode? jsonItem in jsonArray)
+                {
+                    PlayerStats newPlayerStats = new()
+                    {
+                        TeamName = teamNameNoSpace,
+                        PID = (int)jsonItem!["PID"],
+                        rank = customRank
+                    };
+                    if (jsonItem!["jersey"] == null)
+                    {
+                        newPlayerStats.jersey = 0;
+                    }
+                    else
+                    {
+                        newPlayerStats.jersey = (int)jsonItem!["jersey"];
+                    }
+                    newPlayerStats.fname = System.Web.HttpUtility.HtmlDecode(jsonItem!["fname"].ToString());
+                    newPlayerStats.lname = System.Web.HttpUtility.HtmlDecode(jsonItem!["lname"].ToString());
+                    newPlayerStats.GP = (int)jsonItem!["GP"];
+                    newPlayerStats.G = (int)jsonItem!["G"];
+                    newPlayerStats.A = (int)jsonItem!["A"];
+                    newPlayerStats.PTS = (int)jsonItem!["PTS"];
+                    var whatString = jsonItem!["PIM"].ToString();
+                    newPlayerStats.PIMs = whatString;
+                    newPlayerStats.PIMd = Convert.ToDouble(whatString);
+
+                    partialPlayerStats.Add(newPlayerStats);
+
+                    customRank++;
+
+                    await Task.Delay(100);
+                }
+
+
+            }
+            return partialPlayerStats;
+        }
+
         [RelayCommand]
         public async Task FetchStatistics()
         {
+
             if ((SelectedSeason != null) && (SelectedLeague != null) && (SelectedDivision != null) && (SelectedTeam != null))
             {
                 StatusMessage = "Fetching...";
@@ -523,6 +637,8 @@ namespace HackyStaty03.ViewModels
                         PlayerStats.Add(newPlayerStats);
 
                         customRank++;
+
+                        await Task.Delay(100);
                     }
                     StatusMessage = "Ready";
                 }
@@ -539,6 +655,72 @@ namespace HackyStaty03.ViewModels
             }
         }
 
+
+        [RelayCommand]
+        public async void FetchAllStatistics()
+        {
+            
+            int eye = 0;
+            List<Team> listOfSameTeams = AllTeams.Where(x => x.OWHAId == AllStatsTeam.OWHAId).ToList();
+            List<ObservableCollection<PlayerStats>> playerStatsCollection = new List<ObservableCollection<PlayerStats>>();
+            foreach (Team team in listOfSameTeams)
+            {
+                Team currentTeam = team;
+                Division currentDivision = currentTeam.ParentDivision;
+                League currentLeague = currentDivision.ParentLeague;
+                Season currentSeason = currentLeague.ParentSeason;
+
+                ObservableCollection<PlayerStats> allstatst = await HitAPI(currentSeason, currentLeague, currentDivision, currentTeam);
+                playerStatsCollection.Add(allstatst);
+
+            }
+
+            ObservableCollection<PlayerStats> CumulativePlayerStats = new ObservableCollection<PlayerStats>();
+            foreach (ObservableCollection<PlayerStats> ps in playerStatsCollection)
+            {
+                foreach (PlayerStats player in ps)
+                {
+                    bool exists = CumulativePlayerStats.Any(x => x.PID == player.PID);
+                    if (!exists) //add
+                    {
+                        CumulativePlayerStats.Add(player);
+                    }
+                    else
+                    {
+                        PlayerStats currentPlayersStats = CumulativePlayerStats.Where(x => x.PID == player.PID).FirstOrDefault();
+                        currentPlayersStats.GP += player.GP;
+                        currentPlayersStats.G += player.G;
+                        currentPlayersStats.A += player.A;
+                        currentPlayersStats.PTS += player.PTS;
+                        currentPlayersStats.PIMd += player.PIMd;
+                    }
+
+                }
+            }
+
+            StatusMessage = "Fetching...";
+            PlayerStats = [];
+            int customRank = 1;
+
+            ObservableCollection<PlayerStats> soretedPlayerStats = new ObservableCollection<PlayerStats>(CumulativePlayerStats.OrderByDescending(x => x.PTS));
+
+            //foreach (PlayerStats newPlayerStats in CumulativePlayerStats.OrderByDescending(x=>x.PTS).OrderByDescending(y=>y.G).OrderBy(z=>z.PIMd).OrderBy(t=>t.jersey))
+            foreach (PlayerStats newPlayerStats in soretedPlayerStats)
+            {
+                newPlayerStats.rank = customRank;
+                PlayerStats.Add(newPlayerStats);
+                customRank++;
+
+                await Task.Delay(100);
+            }
+            
+
+            
+
+            StatusMessage = "Ready";
+
+            int x = 0;
+        }
         #endregion
 
         #region Random

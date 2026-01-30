@@ -9,6 +9,7 @@ namespace HackyStaty03.Models
 {
     public class Season
     {
+        public OWRoot? ParentRoot { get; set; } = null;
         public Guid GuidId { get; set; }
         public string Name { get; set; } = string.Empty;
         public int OWHAId { get; set; }
