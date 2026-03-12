@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using HackyStaty03.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -6,13 +9,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using HackyStaty03.Models;
 
 namespace HackyStaty03.ViewModels
 {
@@ -298,26 +299,56 @@ namespace HackyStaty03.ViewModels
             int x = 0;
         }
 
+        private string? GetEmbeddedRessource() 
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            // Example resource name: "YourProjectName.FolderName.FileName.txt"
+            string resourceName = "HackyStaty03.DataStore.seasons.json";
+
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream == null)
+                {
+                    // Handle case where resource is not found
+                    Debug.WriteLine($"{resourceName} not found.");
+                    return null;
+                }
+
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    string result = reader.ReadToEnd();
+                    Debug.WriteLine(result);
+                    return result;
+                }
+            }
+
+        }
+
         [RelayCommand]
         public void LoadEverything()
         {
-            CurrentDataFile = Properties.HackyStatySetting.Default.LatestJson;
-            if (File.Exists(CurrentDataFile))
+            //CurrentDataFile = Properties.HackyStatySetting.Default.LatestJson;
+            //GetEmbeddedRessource();
+            //if (File.Exists(CurrentDataFile))
+            string? jsonData = GetEmbeddedRessource();
+            if (!String.IsNullOrEmpty(jsonData))
             {
                 System.Text.Json.JsonSerializerOptions jsonOptions = new()
                 {
                     WriteIndented = true
                 };
 
-                using var reader = new System.IO.StreamReader(CurrentDataFile);
-                while (!reader.EndOfStream)
-                {
-                    string? jSonString = reader.ReadLine();
-                    if (!String.IsNullOrEmpty(jSonString))
-                    {
-                        MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
-                    }
-                }
+                //using var reader = new System.IO.StreamReader(CurrentDataFile);
+                //using var reader = new System.IO.StreamReader(jsonData);
+                //while (!reader.EndOfStream)
+                //{
+                    //string? jSonString = reader.ReadLine();
+                    //if (!String.IsNullOrEmpty(jSonString))
+                    //{
+                        //MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
+                MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jsonData, jsonOptions);
+                //}
+                //}
 
                 GatherAllTeams();
 

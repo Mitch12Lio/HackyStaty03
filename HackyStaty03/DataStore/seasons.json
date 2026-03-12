@@ -1,0 +1,2174 @@
+{
+  "GuidId": "00000000-0000-0000-0000-000000000000",
+  "Name": "",
+  "Children": [
+    {
+      "ParentRoot": null,
+      "GuidId": "5be331bf-3e97-4502-849c-293283a5c177",
+      "Name": "Belleville Tourny",
+      "OWHAId": 3145,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "8b598f63-93fe-495a-9907-399807e1be6a",
+          "Name": "25/26",
+          "OWHAId": 13180,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "71defeb2-8a47-4d8d-8444-f46ece47368f",
+              "Name": "U18 B",
+              "OWHAId": 26545,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "a367d5e5-45b4-4620-9f51-c433f8e27314",
+                  "Name": "Ottawa Ice 2037",
+                  "OWHAId": 323372,
+                  "DisplayName": "Ottawa Ice 2037 - 323372"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "a55cc4f0-38eb-47fe-83a0-ea04bde36b3b",
+      "Name": "Eastern",
+      "OWHAId": 2788,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "1526af41-480b-490f-a5c5-7ff8cf5f0943",
+          "Name": "25/26",
+          "OWHAId": 12488,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "569957fe-92e1-4d1e-a419-9c00bce95cd3",
+              "Name": "U18 BB",
+              "OWHAId": 14809,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "d7e479b8-337e-4f9a-a72d-493a072c7b51",
+                  "Name": "Carleton Place 7485",
+                  "OWHAId": 323401,
+                  "DisplayName": "Carleton Place 7485 - 323401"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "ccc6f4e0-7331-48d1-9014-996f56698ca6",
+                  "Name": "EO 2484",
+                  "OWHAId": 323460,
+                  "DisplayName": "EO 2484 - 323460"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "7a30528c-5a9a-4b61-8ff5-378a514dd6cb",
+                  "Name": "EO 2485",
+                  "OWHAId": 323461,
+                  "DisplayName": "EO 2485 - 323461"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "40df1b41-3d20-470d-b591-259e32a5b70a",
+                  "Name": "Gatineau 7945",
+                  "OWHAId": 329634,
+                  "DisplayName": "Gatineau 7945 - 329634"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "cb5b71b5-1af4-4d6f-8388-0f3c8cc2113b",
+                  "Name": "Kanata 1774",
+                  "OWHAId": 323156,
+                  "DisplayName": "Kanata 1774 - 323156"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "155e5e91-ca3c-461c-a0a2-af34d4a087e7",
+                  "Name": "Kanata 1775",
+                  "OWHAId": 323157,
+                  "DisplayName": "Kanata 1775 - 323157"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "70468dd5-3b66-4c4c-bf7f-94ec4ee5eb36",
+                  "Name": "Nepean 2854",
+                  "OWHAId": 323266,
+                  "DisplayName": "Nepean 2854 - 323266"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "3bd6050d-49cd-4cb9-ba15-f2b735463baa",
+                  "Name": "Nepean 2855",
+                  "OWHAId": 323267,
+                  "DisplayName": "Nepean 2855 - 323267"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "dc374b13-7b7e-42dd-b7cd-f2a257f965d0",
+                  "Name": "Ottawa 2036",
+                  "OWHAId": 323371,
+                  "DisplayName": "Ottawa 2036 - 323371"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "e96a00af-bfcc-46f7-8342-1526cfc758f5",
+                  "Name": "Ottawa 2042",
+                  "OWHAId": 323494,
+                  "DisplayName": "Ottawa 2042 - 323494"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "437bb48a-5a60-46e3-ad08-41c0aed16726",
+                  "Name": "Ottawa Valley Thunder #4307",
+                  "OWHAId": 323491,
+                  "DisplayName": "Ottawa Valley Thunder #4307 - 323491"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "2350fabb-684d-47f7-99db-e264f5f1042c",
+              "Name": "U18 B",
+              "OWHAId": 14827,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "08ef9eb6-856e-4d7a-839f-849ddb4de71a",
+                  "Name": "CP 7486",
+                  "OWHAId": 323402,
+                  "DisplayName": "CP 7486 - 323402"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "f8f6e9f5-1ea0-42a8-b5f9-27bfe43c0499",
+                  "Name": "EO 1",
+                  "OWHAId": 323462,
+                  "DisplayName": "EO 1 - 323462"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "cf508f30-9318-4a2a-b3ac-4c6f4b0396f3",
+                  "Name": "EO 2",
+                  "OWHAId": 323463,
+                  "DisplayName": "EO 2 - 323463"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "a71e8454-b7ca-42da-a169-5ceff66bc98c",
+                  "Name": "Glengarry 6408",
+                  "OWHAId": 323469,
+                  "DisplayName": "Glengarry 6408 - 323469"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "5764bd85-d087-4889-b8cf-c067ff1467ae",
+                  "Name": "Kanata 1772",
+                  "OWHAId": 323155,
+                  "DisplayName": "Kanata 1772 - 323155"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "1c632581-452e-4ad9-9e5d-a5f727354eb5",
+                  "Name": "Kemptville 5923",
+                  "OWHAId": 323342,
+                  "DisplayName": "Kemptville 5923 - 323342"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b348edde-1ebe-4586-901f-a73a6a60d313",
+                  "Name": "Nepean 2869",
+                  "OWHAId": 323269,
+                  "DisplayName": "Nepean 2869 - 323269"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "d97cef39-17e5-4f74-96ab-5204ed8c7d30",
+                  "Name": "Ottawa Ice 2037",
+                  "OWHAId": 323372,
+                  "DisplayName": "Ottawa Ice 2037 - 323372"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "037d6979-8c4e-43a1-87ee-6bec88caebc8",
+                  "Name": "Ottawa Valley 4305",
+                  "OWHAId": 323493,
+                  "DisplayName": "Ottawa Valley 4305 - 323493"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9eb2ab1b-03cc-40ef-b911-060c60cf3ce8",
+                  "Name": "Russell 7314",
+                  "OWHAId": 323184,
+                  "DisplayName": "Russell 7314 - 323184"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "91b70c92-5a6f-480f-81a7-4cddc02120b1",
+                  "Name": "Smith Falls 6630",
+                  "OWHAId": 323147,
+                  "DisplayName": "Smith Falls 6630 - 323147"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "33591d53-1f3d-40a1-8442-24d9a8494dfd",
+                  "Name": "Stittsville 4942",
+                  "OWHAId": 323331,
+                  "DisplayName": "Stittsville 4942 - 323331"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "af504361-a0fb-4bf2-b05c-d8872f3f68d3",
+                  "Name": "Stittsville 4949",
+                  "OWHAId": 323330,
+                  "DisplayName": "Stittsville 4949 - 323330"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "ac01991e-80c0-446d-b1f1-b62490f232b9",
+              "Name": "U18 AA",
+              "OWHAId": 14808,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "804885cd-e8ce-4529-9824-eb777fa5541c",
+                  "Name": "EO",
+                  "OWHAId": 323458,
+                  "DisplayName": "EO - 323458"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "8e961447-d1bf-4628-b0d8-438da094be40",
+              "Name": "U18 A",
+              "OWHAId": 14807,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "f9ce592c-dc57-4042-9f83-f9f92d55fd4c",
+                  "Name": "EO",
+                  "OWHAId": 323459,
+                  "DisplayName": "EO - 323459"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "fb92d182-4766-432d-b15b-ada372409f72",
+                  "Name": "Nepean 2867",
+                  "OWHAId": 323271,
+                  "DisplayName": "Nepean 2867 - 323271"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "2be95383-247e-49f3-8bf2-c306ce064b11",
+                  "Name": "Nepean 2872",
+                  "OWHAId": 323270,
+                  "DisplayName": "Nepean 2872 - 323270"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "f633ec62-c39f-4661-89a7-c3a482ec7174",
+          "Name": "24/25",
+          "OWHAId": 10740,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "a60c1cce-c559-47a3-8635-22ff0e98f59f",
+              "Name": "U18 C",
+              "OWHAId": 15010,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "58e5ff82-97ca-4d97-a305-bf441db74eab",
+                  "Name": "Nepean",
+                  "OWHAId": 252577,
+                  "DisplayName": "Nepean - 252577"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "274d8e4a-46ee-4c2e-b247-f2a5181f5585",
+              "Name": "U18 BB",
+              "OWHAId": 14809,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "f2ab7a30-2559-442b-a0a0-63b51df59d30",
+                  "Name": "EO (Bond)",
+                  "OWHAId": 252780,
+                  "DisplayName": "EO (Bond) - 252780"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "14ea376f-38a1-45ff-be61-89c2a74933ca",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 252779,
+                  "DisplayName": "EO (Nadon) - 252779"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "2850a4b8-7ae1-4483-a741-6f7f5c150d2f",
+              "Name": "U18 AA",
+              "OWHAId": 14808,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "eed93ac8-569a-42cd-94e8-69aca3cb8b43",
+                  "Name": "EO",
+                  "OWHAId": 252777,
+                  "DisplayName": "EO - 252777"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b758fa3f-70c4-41a7-b7b6-78780c3a1036",
+                  "Name": "Ottawa Lady 67s",
+                  "OWHAId": 252712,
+                  "DisplayName": "Ottawa Lady 67s - 252712"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "7f9c06e9-05fc-4f58-b8dc-e7acaf6095d0",
+              "Name": "U18 A",
+              "OWHAId": 14807,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "2142140d-dc04-4c1e-ae44-1837bf3a8097",
+                  "Name": "EO",
+                  "OWHAId": 252778,
+                  "DisplayName": "EO - 252778"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "af5c36c4-e5da-43d2-8a55-51163755b9f5",
+                  "Name": "Nepean",
+                  "OWHAId": 252579,
+                  "DisplayName": "Nepean - 252579"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "a21499a9-d7b7-42f2-9e34-a77354c2c7df",
+                  "Name": "Ottawa Ice",
+                  "OWHAId": 252709,
+                  "DisplayName": "Ottawa Ice - 252709"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "f55f884e-7f41-4fcc-91e9-bd25f80e1a14",
+              "Name": "U15 AA",
+              "OWHAId": 14803,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "22fd70dd-4e2b-4ba6-b19b-9cc24468be72",
+                  "Name": "EO",
+                  "OWHAId": 253439,
+                  "DisplayName": "EO - 253439"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "bcbd72c4-6819-4d75-94bf-6c9510a5eb38",
+              "Name": "U15 A",
+              "OWHAId": 14802,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b2278952-772a-4bf9-8e4c-a724f4a510b5",
+                  "Name": "EO",
+                  "OWHAId": 253440,
+                  "DisplayName": "EO - 253440"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "61d797a9-85ef-45cf-9a1c-64616c46cca7",
+          "Name": "23/24",
+          "OWHAId": 8987,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "ae3970b0-bf11-405a-9ac5-28023ab8bc7f",
+              "Name": "U18 C",
+              "OWHAId": 15010,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9cd9c034-4c85-4360-84aa-eb5ef20ecc1d",
+                  "Name": "EO",
+                  "OWHAId": 194140,
+                  "DisplayName": "EO - 194140"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "90348a33-c8d1-4bd5-b04c-abc0028ba203",
+              "Name": "U18 BB",
+              "OWHAId": 14809,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "3840c17f-d5d0-4c0a-b6b3-acbbf03c3184",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 194143,
+                  "DisplayName": "EO (Nadon) - 194143"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b5f647b3-e930-4836-9361-6d11f398fbc6",
+                  "Name": "EO (O\u0027Donnell)",
+                  "OWHAId": 194144,
+                  "DisplayName": "EO (O\u0027Donnell) - 194144"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "54ec68aa-3411-4a73-9004-786f464de0a7",
+              "Name": "U18 B",
+              "OWHAId": 14827,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "49a61091-3d65-4876-ae52-567cea319892",
+                  "Name": "EO",
+                  "OWHAId": 194141,
+                  "DisplayName": "EO - 194141"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "a0a63921-d4f8-4472-942c-686d7c2662c6",
+              "Name": "U18 AA",
+              "OWHAId": 14808,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "6b9dce50-1f9d-4a93-9091-3c489ad8ac8c",
+                  "Name": "EO",
+                  "OWHAId": 194139,
+                  "DisplayName": "EO - 194139"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "12f2a12c-4df8-4ee8-bcdf-42418c4038c8",
+              "Name": "U18 A",
+              "OWHAId": 14807,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "8db5b0a0-b5e1-4d2c-8b39-f1951241095d",
+                  "Name": "EO",
+                  "OWHAId": 194142,
+                  "DisplayName": "EO - 194142"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "4f0807eb-a3dd-4e10-8cf8-4ab23531c822",
+              "Name": "U15 BB",
+              "OWHAId": 14804,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "df6359c2-e2ed-42de-a7b0-773e14ff6c9d",
+                  "Name": "EO",
+                  "OWHAId": 194611,
+                  "DisplayName": "EO - 194611"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "5d173ed6-6232-4359-bc95-bb684f9a136a",
+              "Name": "U15 B",
+              "OWHAId": 14854,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b263d913-a8fa-4a5e-8b0b-737fa040cc63",
+                  "Name": "EO",
+                  "OWHAId": 194612,
+                  "DisplayName": "EO - 194612"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "3e64b520-c5e0-4983-a506-3b2713ee25e8",
+              "Name": "U15 A",
+              "OWHAId": 14802,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "bfda87c8-981b-4464-9945-4fe98b6479b6",
+                  "Name": "EO",
+                  "OWHAId": 194610,
+                  "DisplayName": "EO - 194610"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "a751d0b9-6c79-40a7-a2b6-ee754b121d3e",
+          "Name": "22/23",
+          "OWHAId": 6724,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "718c5f6b-cd24-46a9-879f-0b746fe63208",
+              "Name": "U18 BB",
+              "OWHAId": 14809,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "332c5fce-8799-47b7-937f-14086d5f1165",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 143095,
+                  "DisplayName": "EO (Nadon) - 143095"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "8ac91d73-1841-4c6c-aa15-4e59aefc9f25",
+                  "Name": "EO (Other)",
+                  "OWHAId": 143099,
+                  "DisplayName": "EO (Other) - 143099"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "def120c6-658d-4b36-bacb-4b04c063a5b2",
+              "Name": "U18 B",
+              "OWHAId": 14827,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9b7eff7e-b79d-406a-82c1-c12dd96aac65",
+                  "Name": "GCGH",
+                  "OWHAId": 143092,
+                  "DisplayName": "GCGH - 143092"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "b24171fe-73d4-44b5-9168-9c0a9cea76dd",
+              "Name": "U18 AA",
+              "OWHAId": 14808,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "0c89ef8f-892d-49cb-bf90-b46a5a8bd86c",
+                  "Name": "GCGH",
+                  "OWHAId": 143090,
+                  "DisplayName": "GCGH - 143090"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "95f450eb-d1ed-4945-8ff2-0cb4f932f42a",
+              "Name": "U18 A",
+              "OWHAId": 14807,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "0a9f9fc5-a97c-470b-8b0e-77bcad34afe4",
+                  "Name": "GCGH",
+                  "OWHAId": 143094,
+                  "DisplayName": "GCGH - 143094"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "4f4a218a-be99-45d6-9859-9c8a52f1ced4",
+              "Name": "U15 BB",
+              "OWHAId": 14804,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "8ac14f81-4ab8-46a2-a404-f1260c6c491c",
+                  "Name": "GCGH",
+                  "OWHAId": 143694,
+                  "DisplayName": "GCGH - 143694"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "f3aef00b-a36e-4633-b6b3-6cb18696a381",
+              "Name": "U15 A",
+              "OWHAId": 14802,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "7b6304a9-4670-42d4-851e-1d1bfd14ea59",
+                  "Name": "GCGH",
+                  "OWHAId": 143692,
+                  "DisplayName": "GCGH - 143692"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "49c1f408-8c41-47e8-9211-cf46703e9947",
+          "Name": "21/22",
+          "OWHAId": 5712,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "5c5ab0dc-283a-448b-ae60-4b574597cbd8",
+              "Name": "U18 BB",
+              "OWHAId": 14809,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "fd6bbc72-b41a-457c-86f7-943a74b01da9",
+                  "Name": "EO",
+                  "OWHAId": 105884,
+                  "DisplayName": "EO - 105884"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "47d09b26-8ad2-4e20-9dfc-83d166c6cc77",
+              "Name": "U18 B",
+              "OWHAId": 14827,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "625740a1-66d0-4cdf-81c2-32a675bb65ad",
+                  "Name": "GCGH 1",
+                  "OWHAId": 108412,
+                  "DisplayName": "GCGH 1 - 108412"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "2fb5aa65-df2e-45a2-bf04-36ce0da5cfa3",
+                  "Name": "GCGH 2",
+                  "OWHAId": 108411,
+                  "DisplayName": "GCGH 2 - 108411"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "3caf781a-2c5b-42f1-a21e-399f7ad02bf2",
+              "Name": "U18 AA",
+              "OWHAId": 14808,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "ee2cb503-11c0-44fb-bdac-41d967fa9399",
+                  "Name": "GCGH",
+                  "OWHAId": 105882,
+                  "DisplayName": "GCGH - 105882"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "d4c40b10-b1bc-461d-a801-53751645f740",
+              "Name": "U18 A",
+              "OWHAId": 14807,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "81935c05-2f58-4a27-9ae2-ed10a23d076c",
+                  "Name": "GCGH",
+                  "OWHAId": 105883,
+                  "DisplayName": "GCGH - 105883"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "db605ec6-fd66-444f-b9c8-be4e8afc3535",
+              "Name": "U15 BB",
+              "OWHAId": 14804,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "91cf2487-a68b-4899-b015-3eb84f7ad9c2",
+                  "Name": "GCGH",
+                  "OWHAId": 105881,
+                  "DisplayName": "GCGH - 105881"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "764c129d-53ef-41a0-b0dd-a9b1f38228bf",
+              "Name": "U15 AA",
+              "OWHAId": 14803,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "16622cd5-5d8a-4815-9034-a696f9df27f4",
+                  "Name": "GCGH",
+                  "OWHAId": 108403,
+                  "DisplayName": "GCGH - 108403"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "967190be-0f91-46b8-b2ad-2bca58a31944",
+              "Name": "U15 A",
+              "OWHAId": 14802,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "a3f3d0b8-0851-467b-aec3-56986cc4915b",
+                  "Name": "GCGH",
+                  "OWHAId": 108404,
+                  "DisplayName": "GCGH - 108404"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "c8543f01-18fe-4f0c-be6e-b62de87caacb",
+              "Name": "U13 BB",
+              "OWHAId": 14800,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "44584597-3ec6-4556-ba81-d9d0d82d0455",
+                  "Name": "GCGH",
+                  "OWHAId": 105878,
+                  "DisplayName": "GCGH - 105878"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "6b1f60a0-17e7-4747-bec2-eada11a54382",
+              "Name": "U13 AA",
+              "OWHAId": 14934,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "19310e86-5cea-41d1-9d2a-1bf4b0a9f6f4",
+                  "Name": "GCGH",
+                  "OWHAId": 105983,
+                  "DisplayName": "GCGH - 105983"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "8a0998d0-42f3-4794-8e31-dadb7ecb3ecb",
+      "Name": "Eastern Playdowns",
+      "OWHAId": 3617,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "7b6c2ce5-a5c0-4690-9200-76b43370db9f",
+          "Name": "25/26",
+          "OWHAId": 13359,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "ee482559-f8e4-4a45-98d1-4fc8105fa4f7",
+              "Name": "U18 BB",
+              "OWHAId": 27236,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "0cca470d-f7da-429c-9bda-3948d83e55ff",
+                  "Name": "CP 7485",
+                  "OWHAId": 323401,
+                  "DisplayName": "CP 7485 - 323401"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9bc23531-424f-46ba-8c9d-67f86b51b8e7",
+                  "Name": "EO 2484",
+                  "OWHAId": 323460,
+                  "DisplayName": "EO 2484 - 323460"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b950f28b-692e-486f-afc8-c0c540d09cc5",
+                  "Name": "EO 2485",
+                  "OWHAId": 323461,
+                  "DisplayName": "EO 2485 - 323461"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "dd50a741-6bad-4161-a280-aeb878503b72",
+                  "Name": "Kanata #1774",
+                  "OWHAId": 323156,
+                  "DisplayName": "Kanata #1774 - 323156"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "46640082-826b-40db-8628-5ecaff101bb0",
+                  "Name": "Kanata 1775",
+                  "OWHAId": 323157,
+                  "DisplayName": "Kanata 1775 - 323157"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "f6b92d69-01e4-43df-bce3-46ad406a84ee",
+                  "Name": "Nepean 2854",
+                  "OWHAId": 323266,
+                  "DisplayName": "Nepean 2854 - 323266"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "533647a8-bac1-4832-a9b0-f1e3a490fcbb",
+                  "Name": "Nepean 2855",
+                  "OWHAId": 323267,
+                  "DisplayName": "Nepean 2855 - 323267"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "94b22633-6975-425a-9ff6-8a4afa195777",
+                  "Name": "Ottawa 2036",
+                  "OWHAId": 323371,
+                  "DisplayName": "Ottawa 2036 - 323371"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "4edb09c1-8861-4e5d-a878-743d36580090",
+                  "Name": "Ottawa 2042",
+                  "OWHAId": 323494,
+                  "DisplayName": "Ottawa 2042 - 323494"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "fe9ddc15-d86b-4759-aee1-fd531d0c58dc",
+                  "Name": "Ottawa Valley Thunder 4307",
+                  "OWHAId": 323491,
+                  "DisplayName": "Ottawa Valley Thunder 4307 - 323491"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "e60c0804-dd27-4841-8747-cf996afcce03",
+              "Name": "U18 B",
+              "OWHAId": 27237,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "15ee7f5e-a344-49e8-a76c-83815f15fd11",
+                  "Name": "CP 7486",
+                  "OWHAId": 323402,
+                  "DisplayName": "CP 7486 - 323402"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "bbbeefbb-348d-4fe2-a19b-a72e6c995d70",
+                  "Name": "EO 2486",
+                  "OWHAId": 323462,
+                  "DisplayName": "EO 2486 - 323462"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "d676201b-f10c-42a6-9ffd-69ee254ab4f6",
+                  "Name": "Kanata 1772",
+                  "OWHAId": 323155,
+                  "DisplayName": "Kanata 1772 - 323155"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "3b35bab4-3642-4b9f-a20c-7478fe33095b",
+                  "Name": "Nepean 2869",
+                  "OWHAId": 323269,
+                  "DisplayName": "Nepean 2869 - 323269"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "3a012c2a-613e-43aa-a280-24b6a64e78b3",
+                  "Name": "Ottawa",
+                  "OWHAId": 323372,
+                  "DisplayName": "Ottawa - 323372"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "1d07a2c4-1e5a-4d4e-a114-7aab585bd39d",
+                  "Name": "Ottawa Valley Thunder 4305",
+                  "OWHAId": 323493,
+                  "DisplayName": "Ottawa Valley Thunder 4305 - 323493"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "231e2c90-dff9-4bd0-b46a-fda383eac3ce",
+                  "Name": "Russell",
+                  "OWHAId": 323184,
+                  "DisplayName": "Russell - 323184"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "97e4c690-562b-49dd-9720-fa1e98b4e8db",
+                  "Name": "Smith Falls 6630",
+                  "OWHAId": 323147,
+                  "DisplayName": "Smith Falls 6630 - 323147"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "ec86336e-5ca2-4bd8-8379-7d28c31787e6",
+                  "Name": "Stittsville 4949",
+                  "OWHAId": 323330,
+                  "DisplayName": "Stittsville 4949 - 323330"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "ec2e87c0-5453-4eb2-9d71-c69bb3953379",
+                  "Name": "Stittville 4942",
+                  "OWHAId": 323331,
+                  "DisplayName": "Stittville 4942 - 323331"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "2f8bc28c-2edb-4144-a1a9-7dc21156594b",
+          "Name": "24/25",
+          "OWHAId": 11579,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "0701a1e1-0058-4ddc-bd88-5c899d08bee8",
+              "Name": "U18 BB",
+              "OWHAId": 27236,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "81f80946-d670-41fd-bb19-e65ab185b257",
+                  "Name": "EO (Bond)",
+                  "OWHAId": 252780,
+                  "DisplayName": "EO (Bond) - 252780"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "37ae1fda-5772-488d-bfc2-33cd528b4634",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 252779,
+                  "DisplayName": "EO (Nadon) - 252779"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "7b5f8875-3ba9-4a0d-b85e-f2ba8674a892",
+          "Name": "23/24",
+          "OWHAId": 9735,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "360a9b65-3f77-4a67-9074-dedaf7fc5a0a",
+              "Name": "U18 BB",
+              "OWHAId": 27236,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "6fbfff07-5686-4011-b75b-d03b2e9d8b78",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 194143,
+                  "DisplayName": "EO (Nadon) - 194143"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "8fbdcde6-616c-444b-b8f7-3f38069eb0db",
+      "Name": "EO Kickin in the Capital",
+      "OWHAId": 3139,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "be29e76e-420c-463d-875c-345c9c069cdc",
+          "Name": "25/26",
+          "OWHAId": 13152,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "e73b71cb-f54f-4935-8c04-f5bc408117e9",
+              "Name": "U18 BB",
+              "OWHAId": 26491,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "e42c3ee7-70a4-408f-80f1-44424a81cd04",
+                  "Name": "EO 2484",
+                  "OWHAId": 323460,
+                  "DisplayName": "EO 2484 - 323460"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "7e397446-8365-4933-903b-e13165e39426",
+                  "Name": "EO 2485",
+                  "OWHAId": 323461,
+                  "DisplayName": "EO 2485 - 323461"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "de6fbd2e-f15b-47e4-bb8c-d51bf6dd40c5",
+                  "Name": "Kemptville 5925",
+                  "OWHAId": 323343,
+                  "DisplayName": "Kemptville 5925 - 323343"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "3817ccf6-f3c8-4b64-8ad7-6d0e6558cd99",
+                  "Name": "Nepean 2854",
+                  "OWHAId": 323266,
+                  "DisplayName": "Nepean 2854 - 323266"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "cd9e0148-8302-41ea-9dc1-65de77ab5213",
+                  "Name": "Ottawa Ice 2042",
+                  "OWHAId": 323494,
+                  "DisplayName": "Ottawa Ice 2042 - 323494"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "69c0f214-2619-4c0d-a3c3-44349f00f8a0",
+          "Name": "24/25",
+          "OWHAId": 10623,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "23e5f245-2197-4d48-839f-f06d28d0a73e",
+              "Name": "U18 BB",
+              "OWHAId": 26491,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9faeda1e-0bc8-4945-9374-e712dd34d28f",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 252779,
+                  "DisplayName": "EO (Nadon) - 252779"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "f32da458-3c2c-4d6a-b680-50fb8afd1753",
+      "Name": "Flamborough Tourny",
+      "OWHAId": 3154,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "aa0d423d-558d-42b1-8fe2-c51ff31bb448",
+          "Name": "25/26",
+          "OWHAId": 13221,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "d6585f7d-238a-494c-834c-073d9d6eb304",
+              "Name": "U18 BB",
+              "OWHAId": 26815,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "cca5284b-9cf8-495c-b1fd-c06ca41bd9db",
+                  "Name": "EO 2484",
+                  "OWHAId": 323460,
+                  "DisplayName": "EO 2484 - 323460"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "5a2e081b-131a-4100-92aa-63748a0f6202",
+      "Name": "GHWHL",
+      "OWHAId": 1610,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "b0f41f6b-f54e-4352-86bc-ab275c1391b4",
+          "Name": "25/26",
+          "OWHAId": 14952,
+          "Children": []
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "19dcd185-ca6b-428d-b417-3aacdf44c54a",
+      "Name": "GHWHL GOod One",
+      "OWHAId": 2782,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "f6c51126-a59f-45b6-884d-3561f102155b",
+          "Name": "25/26",
+          "OWHAId": 12483,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "0a9b314d-ee11-4ce5-980c-db7c30b8c25b",
+              "Name": "Senior A",
+              "OWHAId": 14952,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "300a9020-b1ad-48b3-9d38-c8dc0214fdb0",
+                  "Name": "Brampton Canadettes #276",
+                  "OWHAId": 322929,
+                  "DisplayName": "Brampton Canadettes #276 - 322929"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "1b9d09ab-c9f5-4a00-87d3-9a1fc7d73329",
+      "Name": "Kanata Tourny",
+      "OWHAId": 3122,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "1c7bf2d4-fa19-4b21-8dd6-17fad321de79",
+          "Name": "25/26",
+          "OWHAId": 13072,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "2e80a942-bdbb-488f-8b45-f8d244ad5c1d",
+              "Name": "U18 BB",
+              "OWHAId": 26240,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "fa5dd90e-3c0b-4cdb-b483-52bc76e7eecc",
+                  "Name": "Kanata 1774",
+                  "OWHAId": 323156,
+                  "DisplayName": "Kanata 1774 - 323156"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "d034bdd6-e1aa-4fc1-9839-d6b151a5631e",
+                  "Name": "Kanata 1775",
+                  "OWHAId": 323157,
+                  "DisplayName": "Kanata 1775 - 323157"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "29da691d-e72a-40b9-942d-1f3e45f43deb",
+          "Name": "24/25",
+          "OWHAId": 10521,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "51f02152-7d28-4963-8fdf-1bf6bb331fc9",
+              "Name": "U18 BB",
+              "OWHAId": 26240,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "cb0669ef-0b27-4a93-8a37-e9fa9ffda493",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 252779,
+                  "DisplayName": "EO (Nadon) - 252779"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "c8f6c254-e34c-4e6c-a70b-3fb91d04b474",
+          "Name": "23/24",
+          "OWHAId": 9572,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "e55477db-b17a-4ef5-8cd5-4a04d7a88796",
+              "Name": "U18 BB",
+              "OWHAId": 26240,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "770ac425-8a4c-4137-be02-9417f46dbe2e",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 194143,
+                  "DisplayName": "EO (Nadon) - 194143"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "650ddfeb-bed0-44dc-84b3-6e528d502f53",
+      "Name": "MOGHL",
+      "OWHAId": 3829,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "f90fa94b-a0ac-4c6d-a494-cda61f35e683",
+          "Name": "25/26",
+          "OWHAId": 12486,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "104bd7b6-ebb1-4796-b260-f041285a001a",
+              "Name": "Senior HL",
+              "OWHAId": 34563,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "5b990c25-d590-4b9e-8ab1-3263e77c8667",
+                  "Name": "1",
+                  "OWHAId": 324903,
+                  "DisplayName": "1 - 324903"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "2c78a8db-0209-4ba1-906c-1f6a55279e2a",
+      "Name": "MOGHL Good ONe",
+      "OWHAId": 2785,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "21ed35ab-bdb1-4e0a-94cd-e2b4a3251c5d",
+          "Name": "25/26",
+          "OWHAId": 12486,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "3bedb1ec-9380-48f5-9100-f474cb666bfd",
+              "Name": "HL",
+              "OWHAId": 34563,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "4eea32e3-396e-4dc8-b5e5-9014161ac324",
+                  "Name": "Ottawa HL 4",
+                  "OWHAId": 324906,
+                  "DisplayName": "Ottawa HL 4 - 324906"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "ceacf477-3e57-4c5e-8246-1c2a16931826",
+      "Name": "NCWHL",
+      "OWHAId": 2787,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "b7b24285-d580-4d15-8be8-e9e19d529203",
+          "Name": "25/26",
+          "OWHAId": 12487,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "3f710733-5420-4a20-96b9-8799f28df1a1",
+              "Name": "Senior Open",
+              "OWHAId": 34855,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "e3eae082-6ff1-47c0-8746-23f7152b2297",
+                  "Name": "Cornwall",
+                  "OWHAId": 329095,
+                  "DisplayName": "Cornwall - 329095"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "c3a3efb7-d30c-47bc-b2c6-176f89330843",
+                  "Name": "EO",
+                  "OWHAId": 322979,
+                  "DisplayName": "EO - 322979"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b1ffd46c-9813-42d7-998a-b1aae6df357c",
+                  "Name": "Kemptville",
+                  "OWHAId": 322957,
+                  "DisplayName": "Kemptville - 322957"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "c7086e6d-7ff9-4400-838d-4198d9f83a8b",
+                  "Name": "Ottawa Ice",
+                  "OWHAId": 322965,
+                  "DisplayName": "Ottawa Ice - 322965"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "8d5e6e11-f39b-43bc-bb08-2551934f2dc9",
+                  "Name": "Ottawa Ice Cats",
+                  "OWHAId": 329116,
+                  "DisplayName": "Ottawa Ice Cats - 329116"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "51456864-87e0-4155-8492-f1b0fdc7b922",
+                  "Name": "Ottawa Roadrunners",
+                  "OWHAId": 334339,
+                  "DisplayName": "Ottawa Roadrunners - 334339"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9aa4872e-f628-48dd-8c4c-235c09568802",
+                  "Name": "West Ottawa (Kanata)",
+                  "OWHAId": 322922,
+                  "DisplayName": "West Ottawa (Kanata) - 322922"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "65897f2f-13ba-49f7-ae33-72556db7e321",
+              "Name": "Senior Hybrid",
+              "OWHAId": 14793,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b1e177e8-cc1d-43f3-b1dd-10e2e8c383ed",
+                  "Name": "EO",
+                  "OWHAId": 322978,
+                  "DisplayName": "EO - 322978"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "5e39c929-4157-49d0-81d1-3b36a53ad8da",
+              "Name": "Senior A",
+              "OWHAId": 15001,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9102c891-d385-4028-98b5-36e96b39b1e3",
+                  "Name": "EO",
+                  "OWHAId": 322979,
+                  "DisplayName": "EO - 322979"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "3637ee30-91d7-44a5-b112-263047993405",
+                  "Name": "Ottawa Ice",
+                  "OWHAId": 322965,
+                  "DisplayName": "Ottawa Ice - 322965"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "cc2db285-d973-4a1f-9c36-04f0eb506f14",
+          "Name": "24/25",
+          "OWHAId": 10739,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "796d5089-d093-4f1d-8bec-9e8bb163c3cb",
+              "Name": "Senior Hybrid",
+              "OWHAId": 15688,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "5db48989-7321-483d-9dcd-fcda91991c43",
+                  "Name": "EO",
+                  "OWHAId": 252340,
+                  "DisplayName": "EO - 252340"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "138de1d0-a8e7-4fe4-8c8e-494b03baa59c",
+                  "Name": "Ice Cats",
+                  "OWHAId": 264993,
+                  "DisplayName": "Ice Cats - 264993"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "06b7c0ef-d2ec-49c6-9fe2-606b6f9f622e",
+              "Name": "Senior B",
+              "OWHAId": 14793,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "481c07bd-24a5-4d04-a6cc-050e128f05ca",
+                  "Name": "EO",
+                  "OWHAId": 252339,
+                  "DisplayName": "EO - 252339"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "b96176ad-f3de-48a3-b450-ac28b3ad640c",
+          "Name": "23/24",
+          "OWHAId": 8999,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "62dbca48-722d-4da0-974a-f7eb2aed5308",
+              "Name": "Senior Hybrid",
+              "OWHAId": 15688,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b9155063-5861-4329-9190-f0241bdfcb8b",
+                  "Name": "EO",
+                  "OWHAId": 193569,
+                  "DisplayName": "EO - 193569"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "f03c725c-9275-42eb-bf04-f37f885d388c",
+              "Name": "Senior B",
+              "OWHAId": 14793,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "166ecdd1-732b-44cb-a593-88936c886d56",
+                  "Name": "EO",
+                  "OWHAId": 193568,
+                  "DisplayName": "EO - 193568"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "db69fcd2-d0e4-46b5-b028-5d19f2af20e5",
+          "Name": "22/23",
+          "OWHAId": 6794,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "e7d1bb62-8b21-48cf-b170-ed9e9c8d8e23",
+              "Name": "Senior C",
+              "OWHAId": 15004,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "e7b5134d-df6e-46de-a747-153b79088a0d",
+                  "Name": "GCGH",
+                  "OWHAId": 142507,
+                  "DisplayName": "GCGH - 142507"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "2457e0cc-f5ac-407d-96b5-75221fe5dd1a",
+              "Name": "Senior B",
+              "OWHAId": 14793,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "94ad7727-cf37-4eec-86c6-025b5f08f094",
+                  "Name": "GCGH",
+                  "OWHAId": 142476,
+                  "DisplayName": "GCGH - 142476"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "aa43738c-6619-49f8-8564-aef3aebe66da",
+              "Name": "Senior A",
+              "OWHAId": 15688,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "68bee861-d1e2-48b7-a9ef-ca5e03206924",
+                  "Name": "GCGH",
+                  "OWHAId": 142478,
+                  "DisplayName": "GCGH - 142478"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "2d9ebd2c-02c0-4744-a0ca-c865dcf9b377",
+          "Name": "21/22",
+          "OWHAId": 5711,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "670d844d-a366-41bc-bcfa-90caf24e7939",
+              "Name": "Senior C",
+              "OWHAId": 15004,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "1c333faa-29d2-41c8-852a-43059a127299",
+                  "Name": "GCGH",
+                  "OWHAId": 108391,
+                  "DisplayName": "GCGH - 108391"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "f52536bb-3d04-4177-ae07-65137662375b",
+              "Name": "Senior B",
+              "OWHAId": 14793,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "98020456-90d5-40ac-8291-46863b3f55fc",
+                  "Name": "Gloucester Moonray",
+                  "OWHAId": 109669,
+                  "DisplayName": "Gloucester Moonray - 109669"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "f069ad40-9e48-47c8-97fb-af05c8868fcd",
+      "Name": "Nepean Tourny",
+      "OWHAId": 3162,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "fceaab2d-0472-417b-b962-49e18e00fd29",
+          "Name": "25/26",
+          "OWHAId": 13334,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "1608173a-14ae-4e65-94df-b57aa60084f1",
+              "Name": "U18 B",
+              "OWHAId": 27406,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "465d4fd3-be4d-49e4-aac5-aa33312b43a7",
+                  "Name": "Ottawa Ice 2037",
+                  "OWHAId": 323372,
+                  "DisplayName": "Ottawa Ice 2037 - 323372"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "b0020270-af99-4748-b29e-4cc6271eb7ca",
+      "Name": "North Bay Tourny",
+      "OWHAId": 3114,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "7213b4aa-e15b-47cf-84f6-74a15b6e1e9f",
+          "Name": "25/26",
+          "OWHAId": 12478,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "299ff98d-96db-4021-b279-07a8db085826",
+              "Name": "U18 BB",
+              "OWHAId": 29332,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "01507f19-c0c9-4ac1-aa04-6f15bc9a0edd",
+                  "Name": "EO 2484",
+                  "OWHAId": 323460,
+                  "DisplayName": "EO 2484 - 323460"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9af95da9-44e8-4b4a-a508-5b1887ada484",
+                  "Name": "Nepean 2855",
+                  "OWHAId": 323267,
+                  "DisplayName": "Nepean 2855 - 323267"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "8e9e3815-ed0a-4a02-91b5-5ed0b8840757",
+      "Name": "North York Tourny",
+      "OWHAId": 3112,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "ec26fe0d-ffa4-43a4-8d4b-f9e3300fbbae",
+          "Name": "25/26",
+          "OWHAId": 13092,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "77148bad-6e78-4349-92ad-cc54f4e17f76",
+              "Name": "U18 B",
+              "OWHAId": 31338,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "72849114-6344-45df-9839-d1fbe69aadc2",
+                  "Name": "Ottawa Ice 2037",
+                  "OWHAId": 323372,
+                  "DisplayName": "Ottawa Ice 2037 - 323372"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "5ab40f54-6bc7-4db9-82e3-687910508659",
+      "Name": "Oshawa Tourny",
+      "OWHAId": 3052,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "507efb0d-bc30-4ac9-9f03-de5c085d4d7d",
+          "Name": "25/26",
+          "OWHAId": 12550,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "722d5944-e837-416d-b7ea-5e5d1414951e",
+              "Name": "U18 BB",
+              "OWHAId": 24467,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "da746bdc-e8a9-45e4-975a-23d3bdab63d1",
+                  "Name": "EO 2485",
+                  "OWHAId": 323461,
+                  "DisplayName": "EO 2485 - 323461"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "4b7d45d3-6748-4c3f-a4c6-9544030005db",
+                  "Name": "Nepean 2854",
+                  "OWHAId": 323266,
+                  "DisplayName": "Nepean 2854 - 323266"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "9db9dda7-10d1-40f4-9b66-902d30953431",
+                  "Name": "Ottawa Ice 2042",
+                  "OWHAId": 323494,
+                  "DisplayName": "Ottawa Ice 2042 - 323494"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "9dc2ea4e-9026-4709-a4a6-c4bb41207bcb",
+              "Name": "U18 B",
+              "OWHAId": 24468,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "217dca23-882c-4762-9309-0561b3ceac56",
+                  "Name": "Ottawa Ice 2037",
+                  "OWHAId": 323372,
+                  "DisplayName": "Ottawa Ice 2037 - 323372"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "0eea79e8-6d27-40f2-a81b-237fa3bda3d4",
+      "Name": "OWHA",
+      "OWHAId": 2826,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "a10669eb-58f8-4a00-9a7b-7a6945754a1b",
+          "Name": "25/26",
+          "OWHAId": 12493,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "098f8923-f5b7-4e52-984c-3e13eb073da0",
+              "Name": "Senior BB",
+              "OWHAId": 15450,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "5c81d6fd-7b5a-4a40-a290-dfe8a5891168",
+                  "Name": "Ancaster Avanlanche #5065",
+                  "OWHAId": 337166,
+                  "DisplayName": "Ancaster Avanlanche #5065 - 337166"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "7ab26a11-ace2-43d4-ac83-33debc41a980",
+              "Name": "Senior A",
+              "OWHAId": 15448,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "cf172739-017a-4f5f-90b0-f59d188cfc41",
+                  "Name": "Durham Lady Huskies #9039",
+                  "OWHAId": 329750,
+                  "DisplayName": "Durham Lady Huskies #9039 - 329750"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "67cc7ccf-cd39-438f-9856-a2912c1b76d7",
+      "Name": "Peterborough Ice Kats",
+      "OWHAId": 3969,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "69d8ca75-eae9-4b16-8f84-8ee51f622551",
+          "Name": "25/26",
+          "OWHAId": 12321,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "e5b2daf3-7650-45e8-b800-cebe6e2f30e6",
+              "Name": "U18 A",
+              "OWHAId": 35749,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "f3bd8a66-e09f-41d3-9d1a-5d6ca247ed00",
+                  "Name": "EO 2485",
+                  "OWHAId": 323461,
+                  "DisplayName": "EO 2485 - 323461"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "e579aeb2-6934-40e5-a16d-aa69404c35d6",
+      "Name": "Pink the Rink",
+      "OWHAId": 3065,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "ed5c356a-2464-4d9c-9b32-4404000e5294",
+          "Name": "25/26",
+          "OWHAId": 12714,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "6a37be97-dbc7-4cb3-9cac-e99ad65400c1",
+              "Name": "U18 BB",
+              "OWHAId": 19644,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "b7450bc2-dbe4-4d0a-8695-5b7d95e4bf58",
+                  "Name": "EO 2484",
+                  "OWHAId": 323460,
+                  "DisplayName": "EO 2484 - 323460"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "eb0551da-1db8-4910-9968-fab83d8a298f",
+                  "Name": "EO 2485",
+                  "OWHAId": 323461,
+                  "DisplayName": "EO 2485 - 323461"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "11c9123b-7ec2-48b3-94c8-40574610a240",
+                  "Name": "Kanata 1774",
+                  "OWHAId": 323156,
+                  "DisplayName": "Kanata 1774 - 323156"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "3e25d3e8-496e-4da0-871c-bd03770019fc",
+                  "Name": "Kanata 1775",
+                  "OWHAId": 323157,
+                  "DisplayName": "Kanata 1775 - 323157"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "fa9a3529-2479-4a47-8b5b-c416f4f0adf8",
+                  "Name": "Nepean 2854",
+                  "OWHAId": 323266,
+                  "DisplayName": "Nepean 2854 - 323266"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "a1220dd5-221c-4057-857b-7beb8f3423d5",
+                  "Name": "Ottawa Ice 2042",
+                  "OWHAId": 323494,
+                  "DisplayName": "Ottawa Ice 2042 - 323494"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "87f793a1-e128-41dc-bfcc-20690b8ed471",
+          "Name": "24/25",
+          "OWHAId": 10493,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "7456ea74-99dc-4338-92c9-aca5f7080156",
+              "Name": "U18 BB",
+              "OWHAId": 19644,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "c58b3d5a-e0db-495d-995a-65ad343a98a3",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 252779,
+                  "DisplayName": "EO (Nadon) - 252779"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "e2e74bd7-0d20-43cb-8d82-ba59c61b5491",
+          "Name": "23/24",
+          "OWHAId": 9425,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "911e808c-0ded-4466-b61d-a669e2cfdfd9",
+              "Name": "U18 BB",
+              "OWHAId": 19644,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "526f9086-a06c-4373-986a-7c6f87c2475a",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 194143,
+                  "DisplayName": "EO (Nadon) - 194143"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "1b7b95e5-59a3-4c74-b861-f8073c8caac5",
+          "Name": "22/23",
+          "OWHAId": 6820,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "4e1c0c4b-eb56-478a-a77c-0a343e2b8dcb",
+              "Name": "U18 BB",
+              "OWHAId": 19644,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "15852f1e-1bbd-4988-be58-2cc17518a1a8",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 143095,
+                  "DisplayName": "EO (Nadon) - 143095"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "18e48b11-5404-4622-8dd3-88a62d9ad491",
+      "Name": "Provincials",
+      "OWHAId": 2910,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "13c67a6c-380d-40f9-9871-1ab1b95d7295",
+          "Name": "24/25",
+          "OWHAId": 11769,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "7cba2722-21ab-4f10-acca-e7d583e8221a",
+              "Name": "U18 BB",
+              "OWHAId": 16874,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "d91c3c17-1ff7-4287-b4eb-8ea25110ccdc",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 252779,
+                  "DisplayName": "EO (Nadon) - 252779"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "6f220eac-5511-4eb9-8844-ab7ae11af1ce",
+          "Name": "23/24",
+          "OWHAId": 9941,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "7baeb4c0-2ef5-404c-807f-9d837ff58f97",
+              "Name": "U18 BB",
+              "OWHAId": 16874,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "2057a5ac-de65-4554-9e90-da4fadc6981b",
+                  "Name": "EO (Nadon)",
+                  "OWHAId": 194143,
+                  "DisplayName": "EO (Nadon) - 194143"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "ce52ee84-95d5-4009-8b91-39e0fa7064ac",
+          "Name": "22/23",
+          "OWHAId": 6904,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "2278e16f-cdc1-4dc2-9441-bd86453f13a6",
+              "Name": "U18 BB",
+              "OWHAId": 16874,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "30229ca9-b2b6-486b-9939-8c24c4f911a3",
+                  "Name": "GCGH",
+                  "OWHAId": 143095,
+                  "DisplayName": "GCGH - 143095"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "a1baff92-2217-4c2e-9168-65986e02b89e",
+      "Name": "Southern",
+      "OWHAId": 2784,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "edb46d83-b580-4739-bbd5-d8e17865edc3",
+          "Name": "24/25",
+          "OWHAId": 10732,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "dab67c77-c2b5-4674-888f-22ae7c5d4013",
+              "Name": "U18 BB",
+              "OWHAId": 14789,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "6173683b-35cf-4f2d-a6cc-9218d79368b0",
+                  "Name": "Bancroft",
+                  "OWHAId": 252593,
+                  "DisplayName": "Bancroft - 252593"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "7c11e6ad-b302-4858-8e91-f8a18655e34d",
+                  "Name": "Flamborough",
+                  "OWHAId": 252531,
+                  "DisplayName": "Flamborough - 252531"
+                },
+                {
+                  "ParentDivision": null,
+                  "GuidId": "291f1809-41a9-423d-9f49-dd61ca3f1410",
+                  "Name": "Wilmot",
+                  "OWHAId": 252724,
+                  "DisplayName": "Wilmot - 252724"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ParentSeason": null,
+          "GuidId": "3646e634-f110-4548-b89f-ed5fec969a5c",
+          "Name": "23/24",
+          "OWHAId": 8767,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "bff0808f-0e86-4b79-b66f-30bfc121e922",
+              "Name": "U18 BB",
+              "OWHAId": 14789,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "00cee76c-8c54-4c87-b6e7-1263d4ea85bf",
+                  "Name": "Central York",
+                  "OWHAId": 193950,
+                  "DisplayName": "Central York - 193950"
+                }
+              ]
+            },
+            {
+              "ParentLeague": null,
+              "GuidId": "2d03404a-99fe-44aa-ae7e-962ab3c43f2f",
+              "Name": "U18 AA",
+              "OWHAId": 14787,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "d4d4caa9-4a0a-447b-bc79-fdad9ea3a974",
+                  "Name": "Windsor",
+                  "OWHAId": 193862,
+                  "DisplayName": "Windsor - 193862"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "ParentRoot": null,
+      "GuidId": "5f67fec7-7035-4b26-80e6-4bd98f329aed",
+      "Name": "WOGHL",
+      "OWHAId": 2792,
+      "Children": [
+        {
+          "ParentSeason": null,
+          "GuidId": "f457e5ab-1d6e-4f45-8cf6-7471362457e5",
+          "Name": "24/25",
+          "OWHAId": 10744,
+          "Children": [
+            {
+              "ParentLeague": null,
+              "GuidId": "d993f46f-39b9-44fc-9a34-94e8ece7b96d",
+              "Name": "U18 BB",
+              "OWHAId": 15046,
+              "Children": [
+                {
+                  "ParentDivision": null,
+                  "GuidId": "e48525b8-05b2-4121-ba53-b88f240993bc",
+                  "Name": "Windsor 4765",
+                  "OWHAId": 265832,
+                  "DisplayName": "Windsor 4765 - 265832"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
