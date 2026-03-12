@@ -15,6 +15,7 @@ namespace HackyStaty03.Models
         //public List<Division>? Children { get; set; } = null;
 
         public string DisplayName => $"{Name} - {OWHAId}";
+        //public string DisplayName => $"{Name} - {OWHAId} : {(ParentDivision.Name)} / {(ParentDivision.ParentLeague.Name)} / {(ParentDivision.ParentLeague.ParentSeason.Name)}";
 
     }
 }

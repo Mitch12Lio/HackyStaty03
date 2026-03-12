@@ -293,7 +293,7 @@ namespace HackyStaty03.ViewModels
                 }
             }
 
-            DistinctTeams = new ObservableCollection<Team>(AllTeams.DistinctBy(p => p.OWHAId).OrderBy(x => x.Name));
+            DistinctTeams = new ObservableCollection<Team>(AllTeams.DistinctBy(p => p.OWHAId).OrderBy(x => x.DisplayName));
             int teamcount = AllTeams.Count;
             int x = 0;
         }
@@ -659,16 +659,17 @@ namespace HackyStaty03.ViewModels
         [RelayCommand]
         public async void FetchAllStatistics()
         {
+            PlayerStats = [];
+            StatusMessage = "Fetching...";
             
-            int eye = 0;
             List<Team> listOfSameTeams = AllTeams.Where(x => x.OWHAId == AllStatsTeam.OWHAId).ToList();
             List<ObservableCollection<PlayerStats>> playerStatsCollection = new List<ObservableCollection<PlayerStats>>();
             foreach (Team team in listOfSameTeams)
             {
                 Team currentTeam = team;
-                Division currentDivision = currentTeam.ParentDivision;
-                League currentLeague = currentDivision.ParentLeague;
-                Season currentSeason = currentLeague.ParentSeason;
+                Division? currentDivision = currentTeam.ParentDivision;
+                League? currentLeague = currentDivision.ParentLeague;
+                Season? currentSeason = currentLeague.ParentSeason;
 
                 ObservableCollection<PlayerStats> allstatst = await HitAPI(currentSeason, currentLeague, currentDivision, currentTeam);
                 playerStatsCollection.Add(allstatst);
@@ -687,22 +688,25 @@ namespace HackyStaty03.ViewModels
                     }
                     else
                     {
-                        PlayerStats currentPlayersStats = CumulativePlayerStats.Where(x => x.PID == player.PID).FirstOrDefault();
-                        currentPlayersStats.GP += player.GP;
-                        currentPlayersStats.G += player.G;
-                        currentPlayersStats.A += player.A;
-                        currentPlayersStats.PTS += player.PTS;
-                        currentPlayersStats.PIMd += player.PIMd;
+                        PlayerStats? currentPlayersStats = CumulativePlayerStats.FirstOrDefault(x => x.PID == player.PID);
+                        if (currentPlayersStats != null)
+                        {
+                            currentPlayersStats.GP += player.GP;
+                            currentPlayersStats.G += player.G;
+                            currentPlayersStats.A += player.A;
+                            currentPlayersStats.PTS += player.PTS;
+                            currentPlayersStats.PIMd += player.PIMd;
+                        }
                     }
 
                 }
             }
 
-            StatusMessage = "Fetching...";
-            PlayerStats = [];
+            
+            
             int customRank = 1;
 
-            ObservableCollection<PlayerStats> soretedPlayerStats = new ObservableCollection<PlayerStats>(CumulativePlayerStats.OrderByDescending(x => x.PTS));
+            ObservableCollection<PlayerStats> soretedPlayerStats = new ObservableCollection<PlayerStats>(CumulativePlayerStats.OrderByDescending(x => x.PTS).ThenByDescending(y=>y.G).ThenBy(z=>z.PIMd));
 
             //foreach (PlayerStats newPlayerStats in CumulativePlayerStats.OrderByDescending(x=>x.PTS).OrderByDescending(y=>y.G).OrderBy(z=>z.PIMd).OrderBy(t=>t.jersey))
             foreach (PlayerStats newPlayerStats in soretedPlayerStats)

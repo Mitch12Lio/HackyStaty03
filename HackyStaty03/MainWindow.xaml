@@ -86,13 +86,13 @@
                             <Button Grid.Row="0" Grid.Column="1" Content="Open" CommandParameter="CurrentDataPath" Command="{Binding OpenWindowsExplorerCommand}"></Button>
                             <Button Grid.Column="2" Grid.Row="0" Content="Save 2 New DataStore" Command="{Binding Save2DataStoreCommand}"></Button>
                             <CheckBox Grid.Column="3" Grid.Row="0" Content="Force Write on Close" ToolTip="App does not save data on close if there were no modifications."></CheckBox>
-                        </Grid>                       
+                        </Grid>
                     </StackPanel>
                 </GroupBox>
             </StackPanel>
         </Expander>
-        <TabControl>        
-            <TabItem Header="Execute">
+        <TabControl>
+            <TabItem Header="Fetch">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -100,308 +100,334 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Expander Grid.Row="0" Grid.Column="0" Header="Add">
-                        <StackPanel>
+                    <Button Grid.Column="0" Grid.Row="0" Content="(Re)Load Teams" Command="{Binding LoadEverythingCommand}"></Button>
+                    <TabControl Grid.Row="1" Grid.Column="0">
+                        <TabItem Header="League">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
-                                    <GroupBox.Header>
-                                        <Span FontWeight="DemiBold">League</Span>
-                                    </GroupBox.Header>
+                                <Expander Grid.Row="0" Grid.Column="0" Header="Add">
                                     <StackPanel>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
-                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewSeasonName}"></TextBox>
-                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
-                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewSeasonId}"></TextBox>
-                                        </Grid>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
+                                                <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddSeasonCommand}"></Button>
-                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearSeasonFieldsCommand}"></Button>
+                                            <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Span FontWeight="DemiBold">League</Span>
+                                                </GroupBox.Header>
+                                                <StackPanel>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                                        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewSeasonName}"></TextBox>
+                                                        <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                                        <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewSeasonId}"></TextBox>
+                                                    </Grid>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddSeasonCommand}"></Button>
+                                                        <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearSeasonFieldsCommand}"></Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Span FontWeight="DemiBold">Season</Span>
+                                                </GroupBox.Header>
+                                                <StackPanel>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                                        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewLeagueName}"></TextBox>
+                                                        <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                                        <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewLeagueId}"></TextBox>
+                                                    </Grid>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddLeagueCommand}"></Button>
+                                                        <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearLeagueFieldsCommand}"></Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <GroupBox Grid.Row="0" Grid.Column="2" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Span FontWeight="DemiBold">Division</Span>
+                                                </GroupBox.Header>
+                                                <StackPanel>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                                        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewDivisionName}"></TextBox>
+                                                        <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                                        <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewDivisionId}"></TextBox>
+                                                    </Grid>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddDivisionCommand}"></Button>
+                                                        <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearDivisionFieldsCommand}"></Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </GroupBox>
+                                            <GroupBox Grid.Row="0" Grid.Column="3" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Span FontWeight="DemiBold">Team</Span>
+                                                </GroupBox.Header>
+                                                <StackPanel>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
+                                                        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewTeamName}"></TextBox>
+                                                        <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
+                                                        <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewTeamId}"></TextBox>
+                                                    </Grid>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddTeamCommand}"></Button>
+                                                        <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearTeamFieldsCommand}"></Button>
+                                                    </Grid>
+                                                </StackPanel>
+                                            </GroupBox>
                                         </Grid>
                                     </StackPanel>
-                                </GroupBox>
-                                <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
-                                    <GroupBox.Header>
-                                        <Span FontWeight="DemiBold">Season</Span>
-                                    </GroupBox.Header>
-                                    <StackPanel>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
-                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewLeagueName}"></TextBox>
-                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
-                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewLeagueId}"></TextBox>
-                                        </Grid>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddLeagueCommand}"></Button>
-                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearLeagueFieldsCommand}"></Button>
-                                        </Grid>
-                                    </StackPanel>
-                                </GroupBox>
-                                <GroupBox Grid.Row="0" Grid.Column="2" BorderThickness="3">
-                                    <GroupBox.Header>
-                                        <Span FontWeight="DemiBold">Division</Span>
-                                    </GroupBox.Header>
-                                    <StackPanel>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
-                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewDivisionName}"></TextBox>
-                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
-                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewDivisionId}"></TextBox>
-                                        </Grid>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddDivisionCommand}"></Button>
-                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearDivisionFieldsCommand}"></Button>
-                                        </Grid>
-                                    </StackPanel>
-                                </GroupBox>
-                                <GroupBox Grid.Row="0" Grid.Column="3" BorderThickness="3">
-                                    <GroupBox.Header>
-                                        <Span FontWeight="DemiBold">Team</Span>
-                                    </GroupBox.Header>
-                                    <StackPanel>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="Name"></Label>
-                                            <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding NewTeamName}"></TextBox>
-                                            <Label Grid.Row="2" Grid.Column="0" Content="OWHA Id"></Label>
-                                            <TextBox Grid.Row="3" Grid.Column="0" Text="{Binding NewTeamId}"></TextBox>
-                                        </Grid>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Button Grid.Row="0" Grid.Column="0" Content="Add" Command="{Binding AddTeamCommand}"></Button>
-                                            <Button Grid.Row="0" Grid.Column="2" Content="Clear" Command="{Binding ClearTeamFieldsCommand}"></Button>
-                                        </Grid>
-                                    </StackPanel>
-                                </GroupBox>
-                            </Grid>
-                        </StackPanel>
 
-                    </Expander>
-                    <GroupBox Grid.Row="1" Grid.Column="0" BorderThickness="3">
-                        <GroupBox.Header>
-                            <Span FontWeight="DemiBold">Parameters</Span>
-                        </GroupBox.Header>
-                        <StackPanel>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
+                                </Expander>
+                                <GroupBox Grid.Row="1" Grid.Column="0" BorderThickness="3">
                                     <GroupBox.Header>
+                                        <Span FontWeight="DemiBold">Parameters</Span>
+                                    </GroupBox.Header>
+                                    <StackPanel>
                                         <Grid>
                                             <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="League" FontWeight="DemiBold"></Label>
-                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+                                            <GroupBox Grid.Row="0" Grid.Column="0" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="League" FontWeight="DemiBold"></Label>
+                                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
 <Run Text="("></Run>
 <Run Text="{Binding SelectedSeason.OWHAId}"></Run>
 <Run Text=")"></Run>
-                                            </TextBlock>
-                                        </Grid>
-                                    </GroupBox.Header>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding MainOWRoot.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSeason,Mode=TwoWay}"></ComboBox>
-                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteSeasonCommand}"></Button>
-                                    </Grid>
-                                </GroupBox>
-                                <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
-                                    <GroupBox.Header>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="Season" FontWeight="DemiBold"></Label>
-                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </GroupBox.Header>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding MainOWRoot.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSeason,Mode=TwoWay}"></ComboBox>
+                                                    <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteSeasonCommand}"></Button>
+                                                </Grid>
+                                            </GroupBox>
+                                            <GroupBox Grid.Row="0" Grid.Column="1" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="Season" FontWeight="DemiBold"></Label>
+                                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
 <Run Text="("></Run>
 <Run Text="{Binding SelectedLeague.OWHAId}"></Run>
 <Run Text=")"></Run>
-                                            </TextBlock>
-                                        </Grid>
-                                    </GroupBox.Header>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedSeason.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedLeague,Mode=TwoWay}"></ComboBox>
-                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteLeagueCommand}"></Button>
-                                    </Grid>
-                                </GroupBox>
-                                <GroupBox Grid.Row="0" Grid.Column="2" BorderThickness="3">
-                                    <GroupBox.Header>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="Division" FontWeight="DemiBold"></Label>
-                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </GroupBox.Header>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedSeason.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedLeague,Mode=TwoWay}"></ComboBox>
+                                                    <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteLeagueCommand}"></Button>
+                                                </Grid>
+                                            </GroupBox>
+                                            <GroupBox Grid.Row="0" Grid.Column="2" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="Division" FontWeight="DemiBold"></Label>
+                                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
 <Run Text="("></Run>
 <Run Text="{Binding SelectedDivision.OWHAId}"></Run>
 <Run Text=")"></Run>
-                                            </TextBlock>
-                                        </Grid>
-                                    </GroupBox.Header>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding  SelectedLeague.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDivision,Mode=TwoWay}"></ComboBox>
-                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteDivisionCommand}"></Button>
-                                    </Grid>
-                                </GroupBox>
-                                <GroupBox Grid.Row="0" Grid.Column="3" BorderThickness="3">
-                                    <GroupBox.Header>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                            </Grid.RowDefinitions>
-                                            <Label Grid.Row="0" Grid.Column="0" Content="Team" FontWeight="DemiBold"></Label>
-                                            <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </GroupBox.Header>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding  SelectedLeague.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedDivision,Mode=TwoWay}"></ComboBox>
+                                                    <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteDivisionCommand}"></Button>
+                                                </Grid>
+                                            </GroupBox>
+                                            <GroupBox Grid.Row="0" Grid.Column="3" BorderThickness="3">
+                                                <GroupBox.Header>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Label Grid.Row="0" Grid.Column="0" Content="Team" FontWeight="DemiBold"></Label>
+                                                        <TextBlock Grid.Row="0" Grid.Column="1" FontSize="10" VerticalAlignment="Center">
 <Run Text="("></Run>
 <Run Text="{Binding SelectedTeam.OWHAId}"></Run>
 <Run Text=")"></Run>
-                                            </TextBlock>
+                                                        </TextBlock>
+                                                    </Grid>
+                                                </GroupBox.Header>
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedDivision.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTeam,Mode=TwoWay}"></ComboBox>
+                                                    <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteTeamCommand}"></Button>
+                                                </Grid>
+                                            </GroupBox>
                                         </Grid>
-                                    </GroupBox.Header>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding SelectedDivision.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedTeam,Mode=TwoWay}"></ComboBox>
-                                        <Button Grid.Column="1" Grid.Row="0" Content="X" ToolTip="Delete" Command="{Binding DeleteTeamCommand}"></Button>
-                                    </Grid>
+                                    </StackPanel>
                                 </GroupBox>
-                            </Grid>                          
-                        </StackPanel>
-                    </GroupBox>
-                    <Grid Grid.Row="2" Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Button Grid.Column="0" Grid.Row="0" Content="(Re)Load Teams" Command="{Binding LoadEverythingCommand}"></Button>
-                        <Button Grid.Row="0" Grid.Column="1" Content="Fetch Stats'" Command="{Binding FetchStatisticsCommand}"></Button>
-                    </Grid>
-                    <GroupBox Grid.Row="3" Grid.Column="0" BorderThickness="3">
+                                <Grid Grid.Row="2" Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <!--<Button Grid.Column="0" Grid.Row="0" Content="(Re)Load Teams" Command="{Binding LoadEverythingCommand}"></Button>-->
+                                    <Button Grid.Row="0" Grid.Column="1" Content="Fetch Stats'" Command="{Binding FetchStatisticsCommand}"></Button>
+                                </Grid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Totals">
+                            <StackPanel>
+                                <GroupBox BorderThickness="3">
+                                    <GroupBox.Header>
+                                        <Span FontWeight="DemiBold">Team</Span>
+                                    </GroupBox.Header>
+                                    <ComboBox ItemsSource="{Binding DistinctTeams}" DisplayMemberPath="DisplayName" SelectedItem="{Binding AllStatsTeam,Mode=TwoWay}" SelectedIndex="0"></ComboBox>
+                                </GroupBox>
+                                <Button Content="FetchAllStats" Command="{Binding FetchAllStatisticsCommand}"></Button>
+                            </StackPanel>
+                        </TabItem>
+
+                    </TabControl>
+                    <GroupBox Grid.Row="2" Grid.Column="0" BorderThickness="3">
                         <GroupBox.Header>
                             <Span FontWeight="DemiBold">Statistics</Span>
                         </GroupBox.Header>
@@ -573,9 +599,9 @@
                                 <Button Grid.Row="0" Grid.Column="1" Content="Print" Command="{Binding PrintStatisticsCommand}"></Button>
                             </Grid>
                         </Grid>
-
                     </GroupBox>
                 </Grid>
+
             </TabItem>
             <TabItem Header="Mods">
                 <GroupBox Grid.Row="1" Grid.Column="0" BorderThickness="3">
@@ -615,13 +641,13 @@
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-                                         
+
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
                                         <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding MainOWRoot.Children}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedSeason,Mode=TwoWay}"></ComboBox>
-                                       
+
                                     </Grid>
                                     <Label Content="Rename"></Label>
                                     <TextBox Text="{Binding ModifiedSeasonName}"></TextBox>
@@ -743,13 +769,7 @@
                         </HierarchicalDataTemplate>
                     </TreeView.ItemTemplate>
                 </TreeView>
-            </TabItem>
-            <TabItem Header="Totals">
-                <StackPanel>
-                    <ComboBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding AllTeams}" DisplayMemberPath="DisplayName" SelectedItem="{Binding AllStatsTeam,Mode=TwoWay}"></ComboBox>
-                    <Button Content="FetchAllStats" Command="{Binding FetchAllStatisticsCommand}"></Button>
-                </StackPanel>
-            </TabItem>
+            </TabItem>           
         </TabControl>
     </DockPanel>
 </Window>
