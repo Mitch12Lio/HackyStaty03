@@ -5,15 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using MessageBox = System.Windows.MessageBox;
 
 namespace HackyStaty03.ViewModels
 {
@@ -299,11 +302,12 @@ namespace HackyStaty03.ViewModels
             int x = 0;
         }
 
-        private string? GetEmbeddedRessource() 
+        private string? GetEmbeddedRessource()
         {
             var assembly = Assembly.GetExecutingAssembly();
             // Example resource name: "YourProjectName.FolderName.FileName.txt"
-            string resourceName = "HackyStaty03.DataStore.seasons.json";
+            //string resourceName = "HackyStaty03.DataStore.seasons.json";
+            string? resourceName = ConfigurationManager.AppSettings["DataStoreResource"];
 
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
             {
@@ -327,27 +331,40 @@ namespace HackyStaty03.ViewModels
         [RelayCommand]
         public void LoadEverything()
         {
-            //CurrentDataFile = Properties.HackyStatySetting.Default.LatestJson;
+            CurrentDataFile = Properties.HackyStatySetting.Default.LatestJson;
             //GetEmbeddedRessource();
-            //if (File.Exists(CurrentDataFile))
-            string? jsonData = GetEmbeddedRessource();
-            if (!String.IsNullOrEmpty(jsonData))
+
+            //string? jsonData = GetEmbeddedRessource();
+            //if (!String.IsNullOrEmpty(jsonData))
+            if (File.Exists(CurrentDataFile))
             {
                 System.Text.Json.JsonSerializerOptions jsonOptions = new()
                 {
                     WriteIndented = true
                 };
 
+
+
+
+                string jaonString = File.ReadAllText(CurrentDataFile);
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true }; // Optional: handles case mismatch
+                                                                                                //AppConfig config = JsonSerializer.Deserialize<AppConfig>(jsonString, options);
+                if (!String.IsNullOrEmpty(jaonString))
+                {
+                    MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jaonString, jsonOptions);
+                }
+
+
                 //using var reader = new System.IO.StreamReader(CurrentDataFile);
-                //using var reader = new System.IO.StreamReader(jsonData);
+                ////using var reader = new System.IO.StreamReader(jsonData);
                 //while (!reader.EndOfStream)
                 //{
-                    //string? jSonString = reader.ReadLine();
-                    //if (!String.IsNullOrEmpty(jSonString))
-                    //{
-                        //MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
-                MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jsonData, jsonOptions);
-                //}
+                //    string? jSonString = reader.ReadLine();
+                //    if (!String.IsNullOrEmpty(jSonString))
+                //    {
+                //        MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jSonString, jsonOptions);
+                //        //MainOWRoot = System.Text.Json.JsonSerializer.Deserialize<OWRoot>(jsonData, jsonOptions);
+                //    }
                 //}
 
                 GatherAllTeams();
@@ -409,7 +426,7 @@ namespace HackyStaty03.ViewModels
 
             if (DataModified)
             {
-                WriteData();
+                BackupData();
             }
             Properties.HackyStatySetting.Default.Save();
         }
@@ -484,21 +501,42 @@ namespace HackyStaty03.ViewModels
             return mainOWRootSorted;
         }
 
-        public void WriteData()
+        public async Task BackupData()
         {
+            
             OWRoot sortedOWRoot = SortMainOWRoot();
-            CurrentDataFile = Path.Combine(CurrentDataPath, $"{DateTime.Now:yyyyMMddHHmmssffff}_seasons.json");
-            Properties.HackyStatySetting.Default.LatestJson = CurrentDataFile;
+            string backupDataFile = Path.Combine(CurrentDataPath, $"{DateTime.Now:yyyyMMddHHmmssffff}_seasons.json");
+            //Properties.HackyStatySetting.Default.LatestJson = CurrentDataFile;
 
-            using System.IO.StreamWriter file5 = new(CurrentDataFile, true);
+
+
             string owRoot = System.Text.Json.JsonSerializer.Serialize(sortedOWRoot);
-            file5.WriteLine(owRoot);
+            //using System.IO.StreamWriter file5 = new(backupDataFile, true);
+            //file5.WriteLine(owRoot);
+            await File.WriteAllTextAsync(backupDataFile, owRoot);
+
+            try
+            {
+                File.Copy(backupDataFile, "DataStore/seasons.json", true);
+            }
+            catch (Exception ex)
+            {
+
+                string messageBoxText = ex.Message;
+                string caption = "Cannot save JSON datastore";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBoxResult result;
+
+                MessageBox.Show(messageBoxText, caption, button, icon);
+            }
+
         }
 
         [RelayCommand]
         public void Save2DataStore()
         {
-            WriteData();
+            BackupData();
             Properties.HackyStatySetting.Default.Save();
         }
 
@@ -692,7 +730,7 @@ namespace HackyStaty03.ViewModels
         {
             PlayerStats = [];
             StatusMessage = "Fetching...";
-            
+
             List<Team> listOfSameTeams = AllTeams.Where(x => x.OWHAId == AllStatsTeam.OWHAId).ToList();
             List<ObservableCollection<PlayerStats>> playerStatsCollection = new List<ObservableCollection<PlayerStats>>();
             foreach (Team team in listOfSameTeams)
@@ -733,11 +771,11 @@ namespace HackyStaty03.ViewModels
                 }
             }
 
-            
-            
+
+
             int customRank = 1;
 
-            ObservableCollection<PlayerStats> soretedPlayerStats = new ObservableCollection<PlayerStats>(CumulativePlayerStats.OrderByDescending(x => x.PTS).ThenByDescending(y=>y.G).ThenBy(z=>z.PIMd));
+            ObservableCollection<PlayerStats> soretedPlayerStats = new ObservableCollection<PlayerStats>(CumulativePlayerStats.OrderByDescending(x => x.PTS).ThenByDescending(y => y.G).ThenBy(z => z.PIMd));
 
             //foreach (PlayerStats newPlayerStats in CumulativePlayerStats.OrderByDescending(x=>x.PTS).OrderByDescending(y=>y.G).OrderBy(z=>z.PIMd).OrderBy(t=>t.jersey))
             foreach (PlayerStats newPlayerStats in soretedPlayerStats)
@@ -748,9 +786,9 @@ namespace HackyStaty03.ViewModels
 
                 await Task.Delay(100);
             }
-            
 
-            
+
+
 
             StatusMessage = "Ready";
 

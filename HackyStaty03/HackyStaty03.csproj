@@ -10,16 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="DataStore\seasons.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="DataStore\seasons.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.6" />
   </ItemGroup>
@@ -33,6 +23,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="DataStore\seasons.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\HackyStatySetting.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>HackyStatySetting.Designer.cs</LastGenOutput>

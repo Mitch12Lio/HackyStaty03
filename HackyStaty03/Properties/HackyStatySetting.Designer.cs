@@ -8,112 +8,102 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HackyStaty03.Properties
-{
-
-
+namespace HackyStaty03.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.13.0.0")]
-    internal sealed partial class HackyStatySetting : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0")]
+    internal sealed partial class HackyStatySetting : global::System.Configuration.ApplicationSettingsBase {
+        
         private static HackyStatySetting defaultInstance = ((HackyStatySetting)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new HackyStatySetting())));
-
-        public static HackyStatySetting Default
-        {
-            get
-            {
+        
+        public static HackyStatySetting Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LatestJson
-        {
-            get
-            {
+        public string LatestJson {
+            get {
                 return ((string)(this["LatestJson"]));
             }
-            set
-            {
+            set {
                 this["LatestJson"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")]
-        public global::System.Guid LastSelectedSeasonGuid
-        {
-            get
-            {
+        public global::System.Guid LastSelectedSeasonGuid {
+            get {
                 return ((global::System.Guid)(this["LastSelectedSeasonGuid"]));
             }
-            set
-            {
+            set {
                 this["LastSelectedSeasonGuid"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")]
-        public global::System.Guid LastSelectedLeagueGuid
-        {
-            get
-            {
+        public global::System.Guid LastSelectedLeagueGuid {
+            get {
                 return ((global::System.Guid)(this["LastSelectedLeagueGuid"]));
             }
-            set
-            {
+            set {
                 this["LastSelectedLeagueGuid"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")]
-        public global::System.Guid LastSelectedDivisionGuid
-        {
-            get
-            {
+        public global::System.Guid LastSelectedDivisionGuid {
+            get {
                 return ((global::System.Guid)(this["LastSelectedDivisionGuid"]));
             }
-            set
-            {
+            set {
                 this["LastSelectedDivisionGuid"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("00000000-0000-0000-0000-000000000000")]
-        public global::System.Guid LastSelectedTeamGuid
-        {
-            get
-            {
+        public global::System.Guid LastSelectedTeamGuid {
+            get {
                 return ((global::System.Guid)(this["LastSelectedTeamGuid"]));
             }
-            set
-            {
+            set {
                 this["LastSelectedTeamGuid"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string PrintLocation
-        {
-            get
-            {
+        public string PrintLocation {
+            get {
                 return ((string)(this["PrintLocation"]));
             }
-            set
-            {
+            set {
                 this["PrintLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DataStoreResource {
+            get {
+                return ((string)(this["DataStoreResource"]));
+            }
+            set {
+                this["DataStoreResource"] = value;
             }
         }
     }
